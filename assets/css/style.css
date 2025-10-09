@@ -1,0 +1,268 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: #f1f1f1;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.topbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 60px;
+    background-color: rgb(255 255 255/var(--tw-bg-opacity));
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    z-index: 1030;
+}
+
+.topbar .logo {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.topbar .user {
+    display: flex;
+    align-items: center;
+}
+
+.topbar .user i {
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.sidebar {
+    position: fixed;
+    top: 46px;
+    left: 0;
+    width: 240px;
+    height: calc(100% - 46px);
+    background-color: #6c757d;
+    padding: 25px 15px;
+    color: white;
+    overflow-y: auto;
+}
+
+.sidebar .nav-link {
+    color: white;
+    padding: 10px 15px;
+    margin: 5px 0;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+    background-color: #5a6268;
+    text-decoration: none;
+}
+
+.sidebar .nav-link i {
+    margin-right: 10px;
+}
+
+.main {
+    margin-left: 240px;
+    padding: 80px 30px 30px;
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.topbar .dropdown-toggle {
+    text-decoration: none !important;
+}
+
+.topbar .dropdown-toggle:hover {
+    text-decoration: none !important;
+}
+
+@media (max-width: 767.98px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        top: 40px;
+    }
+
+    .main {
+        margin-left: 0;
+        padding-top: 60px;
+    }
+}
+
+.no-caret::after {
+    display: none !important;
+}
+
+.notification-box {
+    width: 300px;
+}
+
+.notification-item {
+    font-size: 14px;
+    white-space: normal;
+}
+
+.dropdown-menu-right {
+    right: 0;
+    left: auto;
+}
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+.badge-notify {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    font-size: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+
+div.gallery {
+    position: relative;
+    margin: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 200px;
+    background: #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    float: left;
+    cursor: pointer;
+}
+
+/* Hover effect */
+div.gallery:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+    border-color: transparent;
+}
+
+div.gallery img,
+div.gallery video {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    display: block;
+    border-bottom: 1px solid #eee;
+}
+
+div.desc {
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+    background: #f9f9f9;
+}
+
+/* Delete button */
+.delete-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: none;
+    padding: 5px 8px;
+    font-size: 12px;
+    border-radius: 50%;
+    line-height: 1;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* Show delete button on hover */
+div.gallery:hover .delete-btn {
+    display: inline-block;
+    animation: fadeIn 0.2s ease;
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+
+
+.attachments .attachment-item {
+    width: 100px;
+    margin: 5px;
+    text-align: center;
+    position: relative;
+}
+
+.attachments .thumb {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.attachments .thumb img,
+.attachments .thumb video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.attachments .thumb:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+.attachments small {
+    display: block;
+    margin-top: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Delete button inside thumbnail */
+.attachments .delete-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    display: none;
+}
+
+.attachments .attachment-item:hover .delete-btn {
+    display: block;
+}
+
+
+.time-display {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #007bff;
+}
+.status {
+    font-size: 1.2rem;
+}

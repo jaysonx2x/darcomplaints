@@ -1,0 +1,42 @@
+body {
+    background-color: #f8f9fa;
+}
+.logo-bar {
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid #ddd;
+    flex-wrap: wrap;
+}
+.logo-bar img {
+    height: 50px;
+}
+.title-text {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-left: 15px;
+    text-align: right;
+}
+.login-card {
+    max-width: 400px;
+    margin: 60px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 767.98px) {
+    .logo-bar {
+        flex-direction: column;
+        text-align: center;
+    }
+    .title-text {
+        margin: 20px 0 0 0;
+        text-align: center;
+    }
+}
+
+.hidden {
+    display: none;
+}
