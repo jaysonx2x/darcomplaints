@@ -99,6 +99,7 @@ defined('SESS_FULLNAME')                OR define('SESS_FULLNAME'           , 'f
 
 // TABLES
 defined('TBL_USERS')                    OR define('TBL_USERS'               , 'users');
+defined('TBL_COMPLAINTS')               OR define('TBL_COMPLAINTS'          , 'complaints');
 
 // USER TYPE
 defined('USER_TYPE_ADMIN')              OR define('USER_TYPE_ADMIN'         , 1);
