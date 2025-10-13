@@ -1,11 +1,14 @@
         
 
         <div class="logo-bar container-fluid">
+            
             <div class="left-section d-flex align-items-center flex-wrap">
-                <img src="<?php echo base_url('assets/img/dar.png'); ?>" alt="Logo">
-                <div class="title-text">
-                    Public Assistance Coordinating and Complaints Unit Online System
-                </div>
+                <a href="<?= base_url(); ?>" class="d-flex align-items-center text-decoration-none">
+                    <img src="<?php echo base_url('assets/img/dar.png'); ?>" alt="Logo" class="mr-2">
+                    <div class="title-text text-dark">
+                        Public Assistance Coordinating and Complaints Unit Online System
+                    </div>
+                </a>
             </div>
 
             <!-- Right Section: Notifications + User Profile -->
@@ -36,8 +39,7 @@
                              class="ml-2 user-avatar">
                     </a>
                     <div class="dropdown-menu dropdown-menu-right shadow" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="<?= base_url('profile'); ?>">Profile</a>
-                        <a class="dropdown-item" href="<?= base_url('settings'); ?>">Settings</a>
+                        <a class="dropdown-item" href="<?= base_url('my-profile'); ?>">Profile</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item text-danger" href="<?= base_url('auth/logout'); ?>">Logout</a>
                     </div>

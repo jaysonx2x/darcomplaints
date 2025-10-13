@@ -104,7 +104,7 @@
                             </div>
                             <div class="row">
                                 <div class="form-group input-group-sm col-md-12">
-                                    <label class="control-label">Email Address </label>
+                                    <label class="control-label">Email Address <small class="text-danger">*</small></label>
                                     <input type="email" class="form-control" placeholder="Email Address" id="email" name="email" maxlength="45">
                                     <small class="text-danger email"></small>
                                 </div>

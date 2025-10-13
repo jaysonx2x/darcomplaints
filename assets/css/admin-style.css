@@ -128,3 +128,139 @@ body {
 .hidden {
     display: none;
 }
+
+
+
+div.gallery {
+    position: relative;
+    margin: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 200px;
+    background: #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    float: left;
+    cursor: pointer;
+}
+
+/* Hover effect */
+div.gallery:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+    border-color: transparent;
+}
+
+div.gallery img,
+div.gallery video {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    display: block;
+    border-bottom: 1px solid #eee;
+}
+
+div.desc {
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+    background: #f9f9f9;
+}
+
+/* Delete button */
+.delete-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: none;
+    padding: 5px 8px;
+    font-size: 12px;
+    border-radius: 50%;
+    line-height: 1;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* Show delete button on hover */
+div.gallery:hover .delete-btn {
+    display: inline-block;
+    animation: fadeIn 0.2s ease;
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+
+
+.attachments .attachment-item {
+    width: 100px;
+    margin: 5px;
+    text-align: center;
+    position: relative;
+}
+
+.attachments .thumb {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.attachments .thumb img,
+.attachments .thumb video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.attachments .thumb:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+.attachments small {
+    display: block;
+    margin-top: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Delete button inside thumbnail */
+.attachments .delete-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    display: none;
+}
+
+.attachments .attachment-item:hover .delete-btn {
+    display: block;
+}
+
+
+.time-display {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #007bff;
+}
+.status {
+    font-size: 1.2rem;
+}

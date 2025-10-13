@@ -36,7 +36,7 @@
             
                 <a href="<?php echo base_url('complaints'); ?>" 
                    class="nav-link <?php echo $route_method == 'complaints/index' ? 'active' : ''; ?>">
-                    <i class="fa fa-comments"></i> Complaints
+                    <i class="fa fa-exclamation-circle"></i> Complaints
                 </a>
             
                 <a href="<?php echo base_url('feedbacks'); ?>" 

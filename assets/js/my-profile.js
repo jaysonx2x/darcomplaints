@@ -37,6 +37,7 @@ $(function(){
                 min: 1
             },
             email : {
+                required : true,
                 email: true
             },
         },

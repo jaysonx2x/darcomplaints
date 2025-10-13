@@ -9,7 +9,7 @@
                 <div class="card">
 
                     <div class="container bg-white mt-4">
-
+                        
                         <form id="user_form" method="post" action="#">
 
                             <div class="row hidden">
@@ -29,6 +29,12 @@
                                 </div>
                                 <div class="col-md-2 form-group input-group-sm">
                                     <input type="text" id="IS_PASSW_EDITED" name="IS_PASSW_EDITED" class="form-control" value="0" readonly >
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-12">
+                                    <h4 class="mb-4 font-weight-bold">My Profile</h4>
                                 </div>
                             </div>
 
@@ -108,7 +114,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="form-group input-group-sm col-md-12">
-                                            <label class="control-label">Email Address </label>
+                                            <label class="control-label">Email Address <small class="text-danger">*</small></label>
                                             <input type="email" class="form-control" placeholder="Email Address" id="email" name="email" maxlength="45"
                                                    value="<?php echo ($is_isset_user) ? $user['email'] : ''; ?>">
                                             <small class="text-danger email"></small>
@@ -120,31 +126,13 @@
                             <div class="row mt-2">
                                 <div class="form-group input-group-sm col-md-6">
                                     <label class="control-label">User Type <small class="text-danger">*</small></label>
-                                    <select class="form-control" id="user_type" name="user_type" disabled onchange="onchangeUserType(this.value);" >
+                                    <select class="form-control" id="user_type" name="user_type" disabled >
                                         <option value="0" selected disabled>--Select--</option>
                                         <option value="1" <?php echo ($is_isset_user and intval($user['user_type']) === 1) ? 'selected' : ''; ?>>Administrator</option>
                                         <option value="2" <?php echo ($is_isset_user and intval($user['user_type']) === 2) ? 'selected' : ''; ?>>Supervisor</option>
                                         <option value="3" <?php echo ($is_isset_user and intval($user['user_type']) === 3) ? 'selected' : ''; ?>>Student</option>
                                     </select>
                                     <small class="text-danger user_type"></small>
-                                </div>
-                                <div id="company_container" class="form-group input-group-sm col-md-6 <?php echo ($is_isset_user and intval($user['user_type']) !== USER_TYPE_ADMIN) ? '' : 'hidden'; ?>">
-                                    <label class="control-label">Company <small class="text-danger">*</small></label>
-                                    <select class="form-control" id="company_id" name="company_id" disabled>
-                                        <option value="0" selected disabled>--Select--</option>
-                                        <?php 
-                                            if(isset($companies) and $companies)
-                                            {
-                                                foreach ($companies as $company)
-                                                {
-                                        ?>
-                                                    <option value="<?php echo $company->id; ?>" <?php echo ($is_isset_user and intval($user['company_id']) === intval($company->id)) ? 'selected' : ''; ?>><?php echo $company->company_name; ?></option>
-                                        <?php
-                                                }
-                                            }
-                                        ?>
-                                    </select>
-                                    <small class="text-danger company_id"></small>
                                 </div>
                             </div>
 

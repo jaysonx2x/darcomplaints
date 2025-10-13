@@ -25,6 +25,9 @@
                 <?php $this->load->view($content); ?>
             </div>
             
+            <?php $this->load->view('user/image_cropper_modal'); ?>
+            <?php $this->load->view('user/cropped_preview_modal'); ?>
+            
         </div>
 
 <?php $this->load->view('template/partial/footer'); ?>

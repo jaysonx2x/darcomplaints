@@ -105,21 +105,21 @@ class User_model extends MY_Model
         $this->load->library('Datatables');
         
         $column = '';
-        $column .= '<span class="btn btn-sm btn-primary rounded-pill" onclick="showUserFormModal($1);" title="Edit User">';
+        $column .= '<span class="btn btn-sm btn-primary" onclick="showUserFormModal($1);" title="Edit User">';
             $column .= '<i class="fa fa-edit"></i>';
         $column .= '</span> ';
-        $column .= '<span class="btn btn-sm btn-danger rounded-pill" onclick="confirmDeleteUser($1,\'$2\');" title="Delete User">';
+        $column .= '<span class="btn btn-sm btn-danger" onclick="confirmDeleteUser($1,\'$2\');" title="Delete User">';
             $column .= '<i class="fa fa-trash"></i>';
         $column .= '</span>';
             
         $flds  = 'u.id, u.profile_url, u.username, u.fullname, u.email, u.user_type';
         
-        switch (intval($this->session->userdata(SESS_USER_TYPE)))
-        {
-            case USER_TYPE_ADMIN:
-                $this->datatables->where('u.id != 1');
-                break;
-        }
+//        switch (intval($this->session->userdata(SESS_USER_TYPE)))
+//        {
+//            case USER_TYPE_ADMIN:
+//                $this->datatables->where('u.id != 1');
+//                break;
+//        }
         
         $this->datatables
             ->select($flds, FALSE)

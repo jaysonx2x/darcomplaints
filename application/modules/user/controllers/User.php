@@ -46,7 +46,6 @@ class User extends MY_Controller {
         $this->data['content'] = 'user/profile';
         
         $this->data['user'] = (array) $this->user->get(intval($this->session->userdata(SESS_USER_ID)));
-        $this->data['companies'] = $this->company->get_all_order_by(array(), 'company_name', 'asc');
         
         $this->data['module_css'] = array (
             base_url('assets/vendors/cropperjs/cropper.css'),

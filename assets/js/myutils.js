@@ -96,48 +96,7 @@ MyUtils = {
         return userType;
     },
     
-    fnFormatStudentStatus: function(val) {
-        
-        var status = {};
-        switch (parseInt(val)) {
-            case 0:
-                status.clas = 'warning';
-                status.text = 'PENDING';
-                break;
-            case 1:
-                status.clas = 'primary';
-                status.text = 'ON-GOING';
-                break;
-            case 2:
-                status.clas = 'success';
-                status.text = 'COMPLETED';
-                break;
-            case 3:
-                status.clas = 'danger';
-                status.text = 'CANCELED';
-                break;
-        }
-        
-        return status;
-    },
-    
-    fnFormatAttendanceType: function(val) {
-        
-        var type = {};
-        switch (parseInt(val)) {
-            case 1:
-                type.clas = 'primary';
-                type.text = 'REGULAR';
-                break;
-            case 2:
-                type.clas = 'success';
-                type.text = 'OVERTIME';
-                break;
-        }
-        
-        return type;
-    },
-    
+
     fnFormatAnnouncementType: function(val) {
         
         var type = {};
@@ -159,38 +118,67 @@ MyUtils = {
         return type;
     },
     
-    fnFormatReportStatus: function(val) {
+    fnClientType: function(val) {
         
-        var status = {};
+        var type = {};
         switch (parseInt(val)) {
             case 1:
-                status.clas = 'primary';
-                status.text = 'SUBMITTED';
+                type.clas = 'primary';
+                type.text = 'CITIZEN';
                 break;
             case 2:
-                status.clas = 'success';
-                status.text = 'CHECKED';
+                type.clas = 'info';
+                type.text = 'STUDENT';
+                break;
+            case 3:
+                type.clas = 'success';
+                type.text = 'GOVT';
+                break;
+            case 4:
+                type.clas = 'dark';
+                type.text = 'FARMER';
+                break;
+            case 5:
+                type.clas = 'warning';
+                type.text = 'LANDOWNER';
+                break;
+            case 6:
+                type.clas = 'danger';
+                type.text = 'OTHER';
                 break;
         }
         
-        return status;
+        return type;
     },
     
-    fnFormatSentTo: function(val) {
+    
+    fnAgeGroup: function(val) {
         
-        var status = {};
+        var type = {};
         switch (parseInt(val)) {
             case 1:
-                status.clas = 'primary';
-                status.text = 'ADMINISTRATORS';
+                type.clas = 'primary';
+                type.text = '<30';
                 break;
             case 2:
-                status.clas = 'info';
-                status.text = 'SUPERVISORS';
+                type.clas = 'info';
+                type.text = '31-40';
+                break;
+            case 3:
+                type.clas = 'success';
+                type.text = '41-50';
+                break;
+            case 4:
+                type.clas = 'warning';
+                type.text = '51-60';
+                break;
+            case 5:
+                type.clas = 'danger';
+                type.text = '>51';
                 break;
         }
         
-        return status;
+        return type;
     },
     
     fnOpenCamera: function(element) {

@@ -41,7 +41,7 @@
                     <a href="<?php echo base_url('complaints'); ?>" class="text-decoration-none text-reset">
                         <div class="card p-4 d-flex">
                             <div class="d-flex align-items-center">
-                                <i class="fa fa-comments fa-2x text-primary mr-3"></i>
+                                <i class="fa fa-exclamation-circle fa-2x text-danger mr-3"></i>
                                 <div>
                                     <h5 class="mb-1">Complaints</h5>
                                     <p class="text-muted mb-0">
@@ -57,7 +57,7 @@
                     <a href="<?php echo base_url('feedbacks'); ?>" class="text-decoration-none text-reset">
                         <div class="card p-4 d-flex">
                             <div class="d-flex align-items-center">
-                                <i class="fa fa-list-ol fa-2x text-info mr-3"></i>
+                                <i class="fa fa-feed fa-2x text-info mr-3"></i>
                                 <div>
                                     <h5 class="mb-1">Feedbacks</h5>
                                     <p class="text-muted mb-0"><?php echo (isset($feedback_count) and $feedback_count) ? $feedback_count : '0' ?> feedbacks</p>
@@ -71,7 +71,7 @@
                     <a href="<?php echo base_url('users'); ?>" class="text-decoration-none text-reset">
                         <div class="card p-4 d-flex">
                             <div class="d-flex align-items-center">
-                                <i class="fa fa-users fa-2x text-info mr-3"></i>
+                                <i class="fa fa-users fa-2x text-warning mr-3"></i>
                                 <div>
                                     <h5 class="mb-1">Users</h5>
                                     <p class="text-muted mb-0"><?php echo (isset($user_count) and $user_count) ? $user_count : '0' ?> users</p>

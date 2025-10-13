@@ -12,6 +12,8 @@ class Complaint_model extends MY_Model
         if (array_key_exists('complaint_date', $post)) 
         { 
             $data['complaint_date'] = fn_format_date($post['complaint_date'], 'Y-m-d'); 
+        } else {
+            $data['complaint_date'] = fn_get_current_date('Y-m-d');
         }
         
         if (array_key_exists('fullname', $post)) 
@@ -70,9 +72,9 @@ class Complaint_model extends MY_Model
         $column .= '<span class="btn btn-sm btn-info" onclick="showPDFModal($1);" title="Print Complaint">';
             $column .= '<i class="fa fa-print"></i>';
         $column .= '</span> ';
-        $column .= '<span class="btn btn-sm btn-primary" onclick="showComplaintFormModal($1);" title="Edit Complaint">';
-            $column .= '<i class="fa fa-edit"></i>';
-        $column .= '</span> ';
+//        $column .= '<span class="btn btn-sm btn-primary" onclick="showComplaintFormModal($1);" title="Edit Complaint">';
+//            $column .= '<i class="fa fa-edit"></i>';
+//        $column .= '</span> ';
         $column .= '<span class="btn btn-sm btn-danger" onclick="confirmDeleteComplaint($1);" title="Delete Complaint">';
             $column .= '<i class="fa fa-trash"></i>';
         $column .= '</span>';

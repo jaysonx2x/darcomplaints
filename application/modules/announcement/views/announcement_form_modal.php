@@ -98,8 +98,6 @@
                                     <select id="announcement_type" name="announcement_type" class="form-control">
                                         <option value="0" disabled selected>-Select-</option>
                                         <option value="1">ALL</option>
-                                        <option value="2">STUDENTS ONLY</option>
-                                        <option value="3">SUPERVISORS ONLY</option>
                                     </select>
                                     <span class="text-danger announcement_type"></span>
                                 </div>
