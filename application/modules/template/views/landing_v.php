@@ -64,7 +64,15 @@
                         <i class="fa fa-comments fa-3x text-success mb-3"></i>
                         <h5>Submit Feedback</h5>
                         <p>Share your thoughts about our service quality.</p>
-                        <a href="<?php echo base_url('feedback'); ?>" class="btn btn-success">Give Feedback</a>
+                        <!-- Button Group -->
+                        <div class="d-flex flex-column flex-sm-row justify-content-center">
+                            <a href="<?php echo base_url('feedback/english'); ?>" class="btn btn-success mb-2 mb-sm-0 mr-sm-2">
+                                Give Feedback (English)
+                            </a>
+                            <a href="<?php echo base_url('feedback/tagalog'); ?>" class="btn btn-success">
+                                Give Feedback (Tagalog)
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -73,7 +81,7 @@
                         <i class="fa fa-exclamation-circle fa-3x text-danger mb-3"></i>
                         <h5>File a Complaint</h5>
                         <p>Report issues or concerns about DAR services.</p>
-                        <a href="<?php echo base_url('complaint'); ?>" class="btn btn-danger">Submit Complaint</a>
+                        <a href="<?php echo base_url('complaint'); ?>" class="btn btn-danger">File a Complaint</a>
                     </div>
                 </div>
             </div>

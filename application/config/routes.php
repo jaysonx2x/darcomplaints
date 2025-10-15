@@ -55,5 +55,5 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['my-profile']    = 'users/profile';
 $route['landing']       = 'outside/index';
-$route['feedback']      = 'outside/feedback';
+$route['feedback/(:any)'] = 'outside/feedback/$1';
 $route['complaint']     = 'outside/complaint';

@@ -6,24 +6,62 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="">
-        
+
         <!-- Favicons -->
         <link rel="apple-touch-icon" sizes="180x180" href="<?php echo base_url('assets/ims/apple-touch-icon.png'); ?>">
         <link rel="icon" type="image/png" sizes="32x32" href="<?php echo base_url('assets/ims/favicon-32x32.png'); ?>">
         <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url('assets/ims/favicon-16x16.png'); ?>">
         <link rel="manifest" href="<?php echo base_url('assets/ims/apple-touch-icon.png'); ?>site.webmanifest">
-        
+
         <title><?php echo SYSTEM_ALIAS ?> | Login</title>
         <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css'); ?>" />
         <link rel="stylesheet" href="<?php echo base_url('assets/css/login-style.css'); ?>" />
         <script type="text/javascript">
             var BASE_URL = '<?php echo base_url(); ?>';
         </script>
+        <style>
+            body {
+                position: relative;
+                background-color: #f8f9fa;
+                overflow: hidden;
+            }
+
+            /* Slanted watermark with spacing between logos */
+            body::before {
+                content: "";
+                position: fixed;
+                top: -50%;
+                left: -50%;
+                width: 200%;
+                height: 200%;
+                /* combine multiple background layers to simulate spacing */
+                background-image: url('<?php echo base_url("assets/img/logo.png"); ?>');
+                background-repeat: repeat;
+                background-size: 250px 250px; /* logo size + spacing control */
+                background-position: 80px 80px; /* edge padding */
+                opacity: 0.7;
+                transform-origin: center;
+                z-index: -1;
+                pointer-events: none;
+            }
+
+            /* Add a white mask layer for readability */
+            body::after {
+                content: "";
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(255, 255, 255, 0.85);
+                z-index: -1;
+            }
+        </style>
     </head>
     <body>
 
         <!-- Logo Bar -->
-        <div class="logo-bar container">
+        <div class="logo-bar container bg-white">
             <div class="d-flex align-items-center">
                 <a href="<?php echo base_url(); ?>">
                     <img src="<?php echo base_url('assets/img/dar.png'); ?>" alt="Logo" style="height: 50px;">
@@ -60,8 +98,8 @@
                 </div>
             </div>
         </div>
-        
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+        <script src="<?= base_url('assets/vendors/jquery/jquery.min.js'); ?>"></script>
         <script src="<?= base_url('assets/vendors/jquery/bootstrap.min.js'); ?>"></script>
         <script src="<?= base_url('assets/js/myutils.js'); ?>"></script>
         <script src="<?= base_url('assets/js/login.js'); ?>"></script>

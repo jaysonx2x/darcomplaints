@@ -11,8 +11,8 @@ class Outside extends MY_Controller {
         echo Modules::run('template/Template/show_landing');
     }
 
-    public function feedback() {
-        echo Modules::run('template/Template/show_feedback');
+    public function feedback($lang=null) {
+        echo Modules::run('template/Template/show_feedback', array('lang' => $lang));
     }
 
     public function complaint() {
