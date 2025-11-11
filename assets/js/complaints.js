@@ -10,66 +10,6 @@ $(function(){
     
     showComplaintDatatables();
     
-    $(complaintFormID).validate({
-        errorClass: "js-error",
-        ignore: [],
-        errorPlacement: function(error, element) {
-            $( element ).closest( "form" ) .find( "small." + element.attr( "id" )).append( error );
-        },
-        rules : {
-            fullname : {
-                minlength : 1,
-                required : true,
-                normalizer: function( value ) {
-                    return $.trim( value );
-                }
-            },
-            complaint_date : {
-                required : true,
-            },
-            address : {
-                minlength : 1,
-                required : true,
-                normalizer: function( value ) {
-                    return $.trim( value );
-                }
-            },
-            id_no : {
-                minlength : 1,
-                required : true,
-                normalizer: function( value ) {
-                    return $.trim( value );
-                }
-            },
-            phone1 : {
-                minlength : 1,
-                required : true,
-                normalizer: function( value ) {
-                    return $.trim( value );
-                }
-            },
-            email : {
-                required : true,
-                email : true,
-            },
-            concerns : {
-                minlength : 1,
-                required : true,
-                normalizer: function( value ) {
-                    return $.trim( value );
-                }
-            },
-        },
-        errorElement: "span",
-        submitHandler: function() {
-            
-            submitComplaintData();
-            
-        }
-    });
-    
-    MyUtils.fnAcceptNumbersOnly('#phone1');
-    
 });
 
 
@@ -77,6 +17,12 @@ function showComplaintDatatables() {
     
     complaintTable = $("#complaint_table").DataTable({
         "columnDefs": [
+            { "targets": 1, 
+                "render": function ( data, type, row ) {
+                    return `<a href="javascript:void(0);" onclick="showComplaintDetailModal(${row[0]});" class="">${data}</a>`;
+                },
+                "sortable": true, "searchable": true, "className": 'text-center'
+            },
             { "targets": 2, 
                 "render": function ( data, type, row ) {
                     return MyUtils.fnFormatMySQLDate(data);
@@ -132,79 +78,34 @@ function showPDFModal(complaintID) {
 }
 
 
-function showComplaintFormModal(complaintID) {
-    
-    $(complaintFormID).data('validator').resetForm();
-    $(complaintFormID)[0].reset();
-    
-    $(complaintFormID + '_modal .modal-title').text('Add Complaint');
-    $(complaintFormID + ' button[type=submit]').attr('disabled', false).html('<i class="fa fa-plus"></i> Add Complaint');
-    
-    (parseInt(complaintID)>0) ? populateComplaintData(complaintID) : '';
-    
-    $(complaintFormID + '_modal').modal('show');
-    
-}
-
-
-function submitComplaintData() {
-    
-    $(complaintFormID + ' button[type=submit]').attr('disabled', true).html('Saving...');
-
-    var formData = MyUtils.fnObjectifyForm($(complaintFormID).serializeArray());
-
-    $.ajax({
-        type: 'POST',
-        data: formData,
-        dataType: 'json',
-        url: BASE_URL + 'complaints/saveComplaint'
-    })
-    .done(function(data) {
-
-        if (data.status) {
-
-            complaintTable.draw();
-
-            var msg = (parseInt($(complaintFormID + ' #id').val())>0) ? 'Complaint updated!.' : 'New complaint added!';
-
-            MyUtils.fnShowToasts('success', 'Success', msg);
-
-            $('#complaint_form_modal').modal('hide');
-
-        }
-
-    });
-
-}
-
-
-function populateComplaintData(profileID) {
-    
-    $('#complaint_form_modal .modal-title').text('Edit Complaint');
-    $(complaintFormID + ' button[type=submit]').attr('disabled', false).html('<i class="fa fa-check"></i> Update Complaint');
+function showComplaintDetailModal(feedbackID) {
     
     MyUtils.fnShowLoader();
     
     $.ajax({
         type: 'POST',
         data: { 
-            id : profileID
+            id : feedbackID
         },
         dataType: 'json',
         url: BASE_URL + 'complaints/getComplaintDetails'
     })
     .done(function(data) {
         
-        console.log(data)
+        console.log(data);
 
         if (data.complaint) {
             
+            $('#complaint_detail_modal .modal-title').text('Complaint - ' + data.complaint.control_no);
+            
             $.each(data.complaint, function(key, value) {
                 console.log(key + ": " + value);
-                $(complaintFormID + ' #' + key).val(value);
+                $('#complaint_detail_modal #' + key).attr('disabled', true).val(value);
             });
             
         }
+        
+        $('#complaint_detail_modal').modal('show');
 
         MyUtils.fnHideLoader();
 

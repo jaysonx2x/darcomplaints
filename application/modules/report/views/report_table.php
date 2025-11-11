@@ -23,7 +23,7 @@
                     
                     <div class="card-header d-flex justify-content-between align-items-center">  
                         <?php if($is_student_user) { ?>
-                            <button class="btn btn-primary" onclick="showReportFormModal(0);">
+                            <button class="btn btn-success" onclick="showReportFormModal(0);">
                                 <i class="fa fa-plus-circle"></i> Add Report
                             </button>
                         <?php } ?>

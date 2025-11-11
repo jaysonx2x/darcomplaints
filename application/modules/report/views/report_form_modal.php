@@ -124,7 +124,7 @@
 
                             <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i class="fa fa-close"></i> Cancel</button>
 
-                            <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> Add Report</button>
+                            <button type="submit" class="btn btn-success"><i class="fa fa-plus"></i> Add Report</button>
 
                         </div>
                         

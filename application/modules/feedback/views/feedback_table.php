@@ -26,5 +26,6 @@
         </div>
         
         <?php // USER FORM MODAL ?>
-        <?php $this->load->view('feedback/feedback_form_modal'); ?>
+        <?php $this->load->view('feedback/feedback_detail_english_modal'); ?>
+        <?php $this->load->view('feedback/feedback_detail_tagalog_modal'); ?>
         <?php // USER FORM MODAL ?>

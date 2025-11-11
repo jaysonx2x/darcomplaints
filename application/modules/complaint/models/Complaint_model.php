@@ -72,7 +72,7 @@ class Complaint_model extends MY_Model
         $column .= '<span class="btn btn-sm btn-info" onclick="showPDFModal($1);" title="Print Complaint">';
             $column .= '<i class="fa fa-print"></i>';
         $column .= '</span> ';
-//        $column .= '<span class="btn btn-sm btn-primary" onclick="showComplaintFormModal($1);" title="Edit Complaint">';
+//        $column .= '<span class="btn btn-sm btn-success" onclick="showComplaintFormModal($1);" title="Edit Complaint">';
 //            $column .= '<i class="fa fa-edit"></i>';
 //        $column .= '</span> ';
         $column .= '<span class="btn btn-sm btn-danger" onclick="confirmDeleteComplaint($1);" title="Delete Complaint">';

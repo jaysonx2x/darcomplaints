@@ -67,7 +67,7 @@ class Sent_file_model extends MY_Model
             case USER_TYPE_STUDENT:
                 $this->datatables->where('f.sent_by', intval($this->session->userdata(SESS_USER_ID)));
                 
-                $column .= '<span class="btn btn-sm btn-primary" onclick="showFileFormModal($1);" title="Edit File">';
+                $column .= '<span class="btn btn-sm btn-success" onclick="showFileFormModal($1);" title="Edit File">';
                     $column .= '<i class="fa fa-edit"></i>';
                 $column .= '</span> ';
                 $column .= '<span class="btn btn-sm btn-danger" onclick="confirmDeleteFile($1,\'$2\');" title="Delete File">';

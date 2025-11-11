@@ -8,6 +8,7 @@
             <div class="row hidden">
                 <div class="form-group col-sm-12">
                     <input type="text" id="id" name="id" class="form-control" value="0" readonly >
+                    <input type="text" id="lang" name="lang" class="form-control" value="<?php echo (isset($lang)) ? $lang : 'english'; ?>" readonly >
                 </div>
             </div>
 
@@ -196,14 +197,22 @@
 
             <table class="table table-bordered table-sm">
                 <thead class="thead-light">
-                    <tr>
-                        <th>Question</th>
-                        <th><i class="fa fa-frown smiley"></i><br>Strongly Disagree</th>
-                        <th><i class="fa fa-meh smiley"></i><br>Disagree</th>
-                        <th><i class="fa fa-meh-blank smiley"></i><br>Neither</th>
-                        <th><i class="fa fa-smile smiley"></i><br>Agree</th>
-                        <th><i class="fa fa-laugh-beam smiley"></i><br>Strongly Agree</th>
-                        <th>N/A</th>
+                    <tr style="font-size: 10pt;">
+                        <th rowspan="2" style="width: 40%; vertical-align: middle"></th>
+                        <th style="width: 10%;"><img src="<?php echo base_url('assets/img/sad.png'); ?>" class="img-fluid w-50" /></th>
+                        <th style="width: 10%;"><img src="<?php echo base_url('assets/img/indifferent.png'); ?>" class="img-fluid w-50" /></th>
+                        <th style="width: 10%;"><img src="<?php echo base_url('assets/img/emoticon.png'); ?>" class="img-fluid w-50" /></th>
+                        <th style="width: 10%;"><img src="<?php echo base_url('assets/img/happy-face.png'); ?>" class="img-fluid w-50" /></th>
+                        <th style="width: 10%;"><img src="<?php echo base_url('assets/img/happy.png'); ?>" class="img-fluid w-50" /></th>
+                        <th style="width: 10%;"><img src="<?php echo base_url('assets/img/na.png'); ?>" class="img-fluid w-50" /></th>
+                    </tr>
+                    <tr style="font-size: 10pt;">
+                        <th>Strongly Disagree</th>
+                        <th style="vertical-align: text-top">Disagree</th>
+                        <th style="vertical-align: text-top">Neither</th>
+                        <th style="vertical-align: text-top">Agree</th>
+                        <th style="vertical-align: text-top">Strongly Agree</th>
+                        <th>Not <br> Applicable</th>
                     </tr>
                 </thead>
                 <tbody style="font-size: 10pt;">
@@ -569,10 +578,10 @@
 
             <div class="form-group">
                 <label for="suggestions">Suggestions on how we can further improve our services (optional):</label>
-                <textarea class="form-control" name="suggestions" id="suggestions" rows="6" maxlength="5000" placeholder="Type your suggestions here..."></textarea>
+                <textarea class="form-control" name="suggestions" id="suggestions" rows="10" maxlength="5000" placeholder="Type your suggestions here..."></textarea>
             </div>
 
-            <div class="text-center mt-4">
+            <div class="text-center mt-4 <?php echo (isset($view_only) and $view_only) ? 'hidden' : ''; ?>">
                 <button type="submit" class="btn btn-success px-5"><i class="fa fa-paper-plane"></i> Submit Feedback</button>
             </div>
         </form>

@@ -143,7 +143,7 @@
                                                             <?php } elseif($ext === 'pdf') { ?>
                                                                 <i class="fa fa-file-pdf-o fa-3x text-danger"></i>
                                                             <?php } elseif(in_array($ext, ['doc','docx'])) { ?>
-                                                                <i class="fa fa-file-word-o fa-3x text-primary"></i>
+                                                                <i class="fa fa-file-word-o fa-3x text-success"></i>
                                                             <?php } elseif(in_array($ext, ['xls','xlsx'])) { ?>
                                                                 <i class="fa fa-file-excel-o fa-3x text-success"></i>
                                                             <?php } elseif(in_array($ext, ['zip','rar'])) { ?>

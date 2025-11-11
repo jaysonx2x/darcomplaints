@@ -6,7 +6,7 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">  
-                        <button class="btn btn-primary" onclick="showUserFormModal(0);">
+                        <button class="btn btn-success" onclick="showUserFormModal(0);">
                             <i class="fa fa-plus-circle"></i> Add User
                         </button>
                         <i></i>

@@ -51,7 +51,7 @@
                                     <input type="file" class="upload" id="fileInput" onchange="peviewImage(this.files);" title="Choose your avatar" />
                                 </div>
 
-                                <span id="btnCrop" class="btn btn-primary btn-sm ml-5"><i class="ti-cut"></i> Crop</span>
+                                <span id="btnCrop" class="btn btn-success btn-sm ml-5"><i class="ti-cut"></i> Crop</span>
                                 <span id="btnRestore" class="btn btn-warning btn-sm"><i class="ti-reload"></i> Reset</span>
 
                             </div>

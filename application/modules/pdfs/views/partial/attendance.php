@@ -37,7 +37,7 @@
             .text-right {
                 text-align: right;
             }
-            .text-primary {
+            .text-success {
                 color: #707cd2;
             }
             .text-success {

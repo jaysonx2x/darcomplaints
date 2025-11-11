@@ -19,7 +19,7 @@ function showFeedbackDatatables() {
         "columnDefs": [
             { "targets": 1, 
                 "render": function ( data, type, row ) {
-                    return MyUtils.fnFormatMySQLDate(data);
+                    return `<a href="javascript:void(0);" onclick="showFeedbackDetailModal(${row[0]});" class="">${MyUtils.fnFormatMySQLDate(data)}</a>`;
                 },
                 "sortable": true, "searchable": true, "className": 'text-center'
             },
@@ -36,6 +36,12 @@ function showFeedbackDatatables() {
                     return `<span class="badge badge-${age.clas}">${age.text}</span>`;
                 },
                 "sortable": true, "searchable": true, "className": 'text-center'
+            },
+            { "targets": 6, 
+                "render": function ( data, type, row ) {
+                    return `<p title="${data}">${MyUtils.fnTruncate(data, 100)}</p>`;;
+                },
+                "sortable": true, "searchable": true, "className": 'text-left'
             },
             { "sortable": false, "searchable": false, "className": 'text-center v-align-mid', "targets": [7] },
             { "visible": false, "searchable": false, "targets": [0] }
@@ -74,85 +80,60 @@ function showPDFModal(feedbackID) {
 }
 
 
-//function showFeedbackFormModal(feedbackID) {
-//    
-//    $(feedbackFormID).data('validator').resetForm();
-//    $(feedbackFormID)[0].reset();
-//    
-//    $(feedbackFormID + '_modal .modal-title').text('Add Feedback');
-//    $(feedbackFormID + ' button[type=submit]').attr('disabled', false).html('<i class="fa fa-plus"></i> Add Feedback');
-//    
-//    (parseInt(feedbackID)>0) ? populateFeedbackData(feedbackID) : '';
-//    
-//    $(feedbackFormID + '_modal').modal('show');
-//    
-//}
-//
-//
-//function submitFeedbackData() {
-//    
-//    $(feedbackFormID + ' button[type=submit]').attr('disabled', true).html('Saving...');
-//
-//    var formData = MyUtils.fnObjectifyForm($(feedbackFormID).serializeArray());
-//
-//    $.ajax({
-//        type: 'POST',
-//        data: formData,
-//        dataType: 'json',
-//        url: BASE_URL + 'feedbacks/saveFeedback'
-//    })
-//    .done(function(data) {
-//
-//        if (data.status) {
-//
-//            feedbackTable.draw();
-//
-//            var msg = (parseInt($(feedbackFormID + ' #id').val())>0) ? 'Feedback updated!.' : 'New feedback added!';
-//
-//            MyUtils.fnShowToasts('success', 'Success', msg);
-//
-//            $('#feedback_form_modal').modal('hide');
-//
-//        }
-//
-//    });
-//
-//}
-//
-//
-//function populateFeedbackData(profileID) {
-//    
-//    $('#feedback_form_modal .modal-title').text('Edit Feedback');
-//    $(feedbackFormID + ' button[type=submit]').attr('disabled', false).html('<i class="fa fa-check"></i> Update Feedback');
-//    
-//    MyUtils.fnShowLoader();
-//    
-//    $.ajax({
-//        type: 'POST',
-//        data: { 
-//            id : profileID
-//        },
-//        dataType: 'json',
-//        url: BASE_URL + 'feedbacks/getFeedbackDetails'
-//    })
-//    .done(function(data) {
-//        
-//        console.log(data)
-//
-//        if (data.feedback) {
-//            
-//            $.each(data.feedback, function(key, value) {
-//                console.log(key + ": " + value);
-//                $(feedbackFormID + ' #' + key).val(value);
-//            });
-//            
-//        }
-//
-//        MyUtils.fnHideLoader();
-//
-//    });
-//    
-//}
+
+function showFeedbackDetailModal(feedbackID) {
+    
+    MyUtils.fnShowLoader();
+    
+    $.ajax({
+        type: 'POST',
+        data: { 
+            id : feedbackID
+        },
+        dataType: 'json',
+        url: BASE_URL + 'feedbacks/getFeedbackDetails'
+    })
+    .done(function(data) {
+        
+        console.log(data);
+
+        if (data.feedback) {
+            
+            $('#feedback_detail_'+data.feedback.lang+'_modal .modal-title').text('Feedback - ' + data.feedback.feedback_date);
+            
+            $.each(data.feedback, function(key, value) {
+                $('#feedback_detail_'+data.feedback.lang+'_modal #' + key).attr('disabled', true).val(value);
+                
+                var $el = $("#feedback_detail_"+data.feedback.lang+"_modal [name='" + key + "']");
+                var tag = $el.prop("nodeName");
+                
+                switch (tag) {
+                    case 'INPUT':
+                    case 'input':
+                        var inputType = $el.attr("type");
+                        switch (inputType) {
+                            case 'checkbox':
+                                break;
+                            case 'radio':
+                                console.log(key + ": " + value);
+                                $("#feedback_detail_"+data.feedback.lang+"_modal [name='" + key + "'][value='" + value + "']").attr('disabled', true).attr('checked', true);
+                                break;
+                        }
+                        break;
+                }
+                
+            });
+            
+        }
+        
+        $('#feedback_detail_'+data.feedback.lang+'_modal').modal('show');
+
+        MyUtils.fnHideLoader();
+
+    });
+    
+}
+
 
 
 function confirmDeleteFeedback(compID) {

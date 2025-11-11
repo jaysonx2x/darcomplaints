@@ -105,7 +105,7 @@ class User_model extends MY_Model
         $this->load->library('Datatables');
         
         $column = '';
-        $column .= '<span class="btn btn-sm btn-primary" onclick="showUserFormModal($1);" title="Edit User">';
+        $column .= '<span class="btn btn-sm btn-success" onclick="showUserFormModal($1);" title="Edit User">';
             $column .= '<i class="fa fa-edit"></i>';
         $column .= '</span> ';
         $column .= '<span class="btn btn-sm btn-danger" onclick="confirmDeleteUser($1,\'$2\');" title="Delete User">';

@@ -64,7 +64,7 @@ class Report_model extends MY_Model
             case USER_TYPE_STUDENT:
                 $this->datatables->where('r.submitted_by', intval($this->session->userdata(SESS_USER_ID)));
                 
-                $column .= '<span class="btn btn-sm btn-primary" onclick="showReportFormModal($1);" title="Edit Report">';
+                $column .= '<span class="btn btn-sm btn-success" onclick="showReportFormModal($1);" title="Edit Report">';
                     $column .= '<i class="fa fa-edit"></i>';
                 $column .= '</span> ';
                 $column .= '<span class="btn btn-sm btn-danger" onclick="confirmDeleteReport($1,\'$2\');" title="Delete Report">';

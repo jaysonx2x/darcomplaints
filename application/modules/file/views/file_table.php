@@ -23,7 +23,7 @@
                     
                     <?php if($is_student_user) { ?>
                         <div class="card-header">
-                            <button class="btn btn-primary" onclick="showFileFormModal(0);">
+                            <button class="btn btn-success" onclick="showFileFormModal(0);">
                                 <i class="fa fa-send"></i> Send a file
                             </button>
                         </div>

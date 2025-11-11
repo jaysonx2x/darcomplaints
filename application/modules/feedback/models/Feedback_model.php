@@ -9,6 +9,11 @@ class Feedback_model extends MY_Model
     
     public function addEditFeedback($post=array())
     {
+        if (array_key_exists('lang', $post)) 
+        { 
+            $data['lang'] = trim($post['lang']); 
+        }
+        
         if (array_key_exists('client_type', $post)) 
         { 
             $data['client_type'] = intval($post['client_type']); 

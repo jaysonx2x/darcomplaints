@@ -42,7 +42,7 @@
                                         </div>
                                         <div class="img-overlay">
                                             <span s>
-                                                <a href="javascript:void(0);" class="btn btn-sm btn-outline-primary btn-camera" 
+                                                <a href="javascript:void(0);" class="btn btn-sm btn-outline-success btn-camera" 
                                                    onclick="MyUtils.fnOpenCamera(this);" title="Open Camera"><i class="fa fa-camera"></i>
                                                 </a>
                                                 <a href="javascript:void(0);" class="btn btn-sm btn-outline-info btn-upload" 
@@ -52,7 +52,7 @@
                                         </div>
                                     </div>
                                     <div class="user-content mt-0">
-                                        <a href="javascript:void(0);" class="btn btn-sm btn-primary btn-capture hidden" 
+                                        <a href="javascript:void(0);" class="btn btn-sm btn-success btn-capture hidden" 
                                            onclick="MyUtils.fnCapturePhoto(this);" title="Capture"><i class="ti-camera"></i>
                                             Capture
                                         </a>
@@ -143,7 +143,7 @@
                             <small class="text-danger username"></small>
 
                             <div id="BTN_EDIT_CONTAINER" class="form-group mt-2">
-                                <span class="btn btn-primary btn-sm rounded-pill" 
+                                <span class="btn btn-success btn-sm rounded-pill" 
                                     onclick="showHidePasswordContainer();"
                                         ><i class="fa fa-pencil"></i> Edit Password</span>
                             </div>
@@ -179,7 +179,7 @@
 
                     <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i class="fa fa-close"></i> Cancel</button>
 
-                    <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> Add Student</button>
+                    <button type="submit" class="btn btn-success"><i class="fa fa-plus"></i> Add Student</button>
 
                 </div>
 

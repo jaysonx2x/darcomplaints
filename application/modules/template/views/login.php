@@ -26,7 +26,6 @@
                 overflow: hidden;
             }
 
-            /* Slanted watermark with spacing between logos */
             body::before {
                 content: "";
                 position: fixed;
@@ -34,13 +33,21 @@
                 left: -50%;
                 width: 200%;
                 height: 200%;
-                /* combine multiple background layers to simulate spacing */
+
+                /* The logo */
                 background-image: url('<?php echo base_url("assets/img/logo.png"); ?>');
+
+                /* Repeat pattern */
                 background-repeat: repeat;
-                background-size: 250px 250px; /* logo size + spacing control */
-                background-position: 80px 80px; /* edge padding */
-                opacity: 0.7;
-                transform-origin: center;
+
+                /* This controls logo size */
+                background-size: 250px 250px; /* adjust logo scale */
+
+                /* This controls spacing */
+                padding: 120px; /* <-- Adds 80px spacing between repeats */
+
+                opacity: 0.3;
+                transform: rotate(-30deg); /* slanted direction */
                 z-index: -1;
                 pointer-events: none;
             }
@@ -93,9 +100,6 @@
                     </div>
                     <button type="button" onclick="validateLogin();" class="btn btn-success btn-block" style="margin-top: 30px; margin-bottom: 30px">Login</button>
                 </form>
-                <div class="mt-3 text-center">
-                    No account yet? <a href="#">Register here.</a>
-                </div>
             </div>
         </div>
 

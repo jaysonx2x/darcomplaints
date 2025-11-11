@@ -63,7 +63,7 @@ class Notification_model extends MY_Model
         $this->load->library('Datatables');
         
         $column = '';
-        $column .= '<span class="btn btn-sm btn-primary rounded-pill" onclick="showAnnouncementFormModal($1);" title="Edit Announcement">';
+        $column .= '<span class="btn btn-sm btn-success rounded-pill" onclick="showAnnouncementFormModal($1);" title="Edit Announcement">';
             $column .= '<i class="fa fa-edit"></i>';
         $column .= '</span> ';
         $column .= '<span class="btn btn-sm btn-danger rounded-pill" onclick="confirmDeleteAnnouncement($1);" title="Delete Announcement">';

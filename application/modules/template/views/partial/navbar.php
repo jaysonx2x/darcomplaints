@@ -39,9 +39,9 @@
                              class="ml-2 user-avatar">
                     </a>
                     <div class="dropdown-menu dropdown-menu-right shadow" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="<?= base_url('my-profile'); ?>">Profile</a>
+                        <a class="dropdown-item" href="<?= base_url('my-profile'); ?>"><i class="fa fa-user-circle"></i> My Profile</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item text-danger" href="<?= base_url('auth/logout'); ?>">Logout</a>
+                        <a class="dropdown-item text-danger" href="<?= base_url('auth/logout'); ?>"><i class="fa fa-sign-out"></i> Logout</a>
                     </div>
                 </div>
             </div>

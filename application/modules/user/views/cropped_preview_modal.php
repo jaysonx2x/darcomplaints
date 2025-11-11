@@ -26,9 +26,9 @@
             
             <div class="modal-footer">
 
-                <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-outline-success" data-dismiss="modal">Cancel</button>
 
-                <button type="submit" class="btn btn-primary" onclick="uploadImage();">Save</button>
+                <button type="submit" class="btn btn-success" onclick="uploadImage();">Save</button>
 
             </div>
 

@@ -13,7 +13,7 @@
         <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url('assets/ims/favicon-16x16.png'); ?>">
         <link rel="manifest" href="<?php echo base_url('assets/ims/apple-touch-icon.png'); ?>site.webmanifest">
 
-        <title><?php echo SYSTEM_ALIAS ?> | Complaint </title>
+        <title><?php echo SYSTEM_ALIAS ?> | Feedback </title>
         <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css'); ?>" />
         <link rel="stylesheet" href="<?php echo base_url('assets/icons/font-awesome/css/font-awesome.min.css') ?>" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/vendors/toastr/toastr.css'); ?>">
@@ -54,7 +54,7 @@
             </div>
             
             <div class="form-section" >
-                <?php (isset($lang) and $lang) ? $this->load->view('template/partial/feedback_'.$lang) : $this->load->view('template/partial/feedback_eng'); ?>
+                <?php (isset($lang) and $lang) ? $this->load->view('template/partial/feedback_'.$lang) : $this->load->view('template/partial/feedback_english'); ?>
             </div>
         </div>
         
