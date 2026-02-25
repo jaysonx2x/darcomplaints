@@ -61,6 +61,8 @@ CREATE TABLE IF NOT EXISTS `complaints` (
   `id_no` varchar(60) NOT NULL,
   `concerns` longtext NOT NULL,
   `status` tinyint(1) NOT NULL COMMENT '0=PENDING, 1=IN PROGRESS, 2=RESOLVED, 3=REJECTED',
+  `addressed_date` DATETIME NULL,
+  `addressed_by` VARCHAR(100) NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 

@@ -181,6 +181,43 @@ MyUtils = {
         return type;
     },
     
+    fnComplaintStatus: function(val, by, date) {
+        
+        var type = {};
+        var info = '';
+        switch (parseInt(val)) {
+            case 0:
+                type.clas = 'warning';
+                type.text = 'PENDING';
+                break;
+            case 1:
+                type.clas = 'primary';
+                type.text = 'IN-PROGRESS';
+                info = `<small class="text-muted">By: ${by}</small>`;
+                break;
+            case 2:
+                type.clas = 'success';
+                type.text = 'RESOLVED';
+                info = `<small class="text-muted">By: ${by}</small><br>
+                        <small class="text-muted">Date: ${MyUtils.fnFormatMySQLDate(date, 'mdyhia')}</small>`;
+                break;
+            case 3:
+                type.clas = 'danger';
+                type.text = 'REJECTED';
+                info = `<small class="text-muted">By: ${by}</small><br>
+                        <small class="text-muted">Date: ${MyUtils.fnFormatMySQLDate(date, 'mdyhia')}</small>`;
+                break;
+        }
+        
+        return `<div class="d-flex text-center">
+            <div class="text-center">
+                <span class="badge badge-${type.clas}">${type.text}</span><br>
+                ${info}
+            </div>
+        </div>`;
+        
+    },
+    
     fnOpenCamera: function(element) {
         Webcam.set({
             width: 350,

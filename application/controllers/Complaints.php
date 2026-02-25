@@ -16,9 +16,9 @@ class Complaints extends ValidatedPages {
         echo Modules::run('complaint/Complaint/saveComplaint');
     }
     
-    public function loadComplaintsDT()
+    public function loadComplaintsDT($status=null)
     {
-        echo Modules::run('complaint/Complaint/loadComplaintsDT');
+        echo Modules::run('complaint/Complaint/loadComplaintsDT', $status);
     }
     
     public function getComplaintDetails()
@@ -29,6 +29,11 @@ class Complaints extends ValidatedPages {
     public function deleteComplaint()
     {
         echo Modules::run('complaint/Complaint/deleteComplaint');
+    }
+    
+    public function saveComplaintStatus()
+    {
+        echo Modules::run('complaint/Complaint/saveComplaintStatus');
     }
     
 }

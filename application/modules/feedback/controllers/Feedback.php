@@ -83,22 +83,61 @@ class Feedback extends MY_Controller {
     
     
     
+    
+    public function pdfFeedback($feedback_id=0) 
+    {
+        if(intval($feedback_id)>0) 
+        {
+            $this->load->helper('pdf_helper');
+
+            $data['status']  = false;
+            $data['output_title']   = 'FEEDBACK';
+            $data['is_landscape_orientation'] = false;
+
+            $data['report'] = (array) $this->feedback->get(intval($feedback_id));
+            if($data['report'])
+            {
+                $data['status'] = true;
+                
+                if($data['report']['lang'] === 'english') 
+                {
+                    $data['report_title'] = 'HELP US SERVE YOU BETTER!';
+                } else {
+                    $data['report_title'] = 'TULUNGAN MO KAMI MAS MAPABUTI ANG AMING PROSESO AT SERBISYO!';
+                }
+                
+                $data['view_url'] = 'pdfs/partial/feedback_'.$data['report']['lang'];
+                
+            }
+            
+//            var_dump($data['report_title']);
+//            exit;
+            
+            $this->load->view('pdfs/index', $data);
+            
+        } else {
+            show_404();
+        }
+            
+    }
+    
+    
+    
     public function pdfFeedbacks() 
     {
         $this->load->helper('pdf_helper');
         
         $data['status']  = false;
-        $data['report_title']   = 'COMPANIES';
-        $data['output_title']   = 'COMPANIES';
-        $data['is_landscape_orientation'] = false;
+        $data['report_title']   = 'FEEDBACKS';
+        $data['output_title']   = 'FEEDBACKS';
+        $data['is_landscape_orientation'] = true;
         
         $data['reports'] = (array) $this->feedback->getAllFeedbacks();
         if($data['reports'])
         {
             $data['status'] = true;
-
         }
-        $data['view_url'] = 'pdfs/partial/companies';
+        $data['view_url'] = 'pdfs/partial/feedbacks';
 
         $this->load->view('pdfs/index', $data);
             

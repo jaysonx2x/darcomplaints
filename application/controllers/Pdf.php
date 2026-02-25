@@ -7,20 +7,20 @@ class Pdf extends ValidatedPages
         parent::__construct();
     }    
     
-    public function students($company_id=0, $batch_id=0) {
-        echo Modules::run('student/Student/pdfStudents', $company_id, $batch_id);
+    public function complaint($complaint_id=0) {
+        echo Modules::run('complaint/Complaint/pdfComplaint', $complaint_id);
     }
     
-    public function reports() {
-        echo Modules::run('report/Report/pdfReports');
+    public function complaints() {
+        echo Modules::run('complaint/Complaint/pdfComplaints');
     }
     
-    public function attendances($user_id=0) {
-        echo Modules::run('attendance/Attendance/pdfAttendance', $user_id);
+    public function feedback($feedback_id=0) {
+        echo Modules::run('feedback/Feedback/pdfFeedback', $feedback_id);
     }
     
-    public function companies() {
-        echo Modules::run('company/Company/pdfCompanies');
+    public function feedbacks() {
+        echo Modules::run('feedback/Feedback/pdfFeedbacks');
     }
     
     public function users() {

@@ -8,17 +8,20 @@
                     
                     <div class="modal-body p-0">
 
-                        <div class="row">
+                        <div id="pdf_container" class="position-relative" style="height: 700px;">
 
-                            <div class="col-md-12">
-                                <iframe id="THE_PDF" width="100%" height="700px"></iframe>
+                            <div id="pdf_loader">
+                                <div class="spinner-border text-info" role="status"></div>
+                                <div class="mt-2">Loading PDF...</div>
                             </div>
+
+                            <div id="THE_PDF" class="w-100 h-100"></div>
 
                         </div>
 
                     </div>
 
-                    <div class="modal-footer">
+                    <div class="modal-footer p-1">
 
                         <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
 

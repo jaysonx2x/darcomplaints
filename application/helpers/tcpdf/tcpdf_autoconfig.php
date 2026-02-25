@@ -165,11 +165,11 @@ if (!defined('PDF_MARGIN_FOOTER')) {
 }
 
 if (!defined('PDF_MARGIN_TOP')) {
-	define ('PDF_MARGIN_TOP', 10);
+	define ('PDF_MARGIN_TOP', 6);
 }
 
 if (!defined('PDF_MARGIN_BOTTOM')) {
-	define ('PDF_MARGIN_BOTTOM', 10);
+	define ('PDF_MARGIN_BOTTOM', 6);
 }
 
 if (!defined('PDF_MARGIN_LEFT')) {

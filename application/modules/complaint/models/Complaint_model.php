@@ -64,30 +64,51 @@ class Complaint_model extends MY_Model
     }
     
     
-    public function loadDatatableComplaints()
+    public function loadDatatableComplaints($status=null)
     {
         $this->load->library('Datatables');
         
         $column = '';
-        $column .= '<span class="btn btn-sm btn-info" onclick="showPDFModal($1);" title="Print Complaint">';
-            $column .= '<i class="fa fa-print"></i>';
+        
+        $column .= '<span class="btn btn-sm btn-success" onclick="showStatusFormModal($1, $2, \'$3\', \'$4\');" title="Update Status">';
+            $column .= '<i class="fa fa-pencil"></i>';
         $column .= '</span> ';
-//        $column .= '<span class="btn btn-sm btn-success" onclick="showComplaintFormModal($1);" title="Edit Complaint">';
-//            $column .= '<i class="fa fa-edit"></i>';
-//        $column .= '</span> ';
-        $column .= '<span class="btn btn-sm btn-danger" onclick="confirmDeleteComplaint($1);" title="Delete Complaint">';
-            $column .= '<i class="fa fa-trash"></i>';
-        $column .= '</span>';
+        
+        $column .= '<span class="btn btn-sm btn-info" onclick="showPDFModal(\'pdf/complaint/$1\');" title="Print Complaint"><i class="fa fa-print"></i></span> ';
             
-        $flds  = 'c.id, c.control_no, c.complaint_date, c.fullname, c.address, c.phone1, c.concerns';
+        $flds  = 'c.id, c.control_no, c.complaint_date, c.fullname, c.address, c.phone1, c.status, c.addressed_by, c.addressed_date, c.concerns';
+        
+        (intval($status) != 10) ? $this->datatables->where('c.status = ' . intval($status)) : '';
         
         $this->datatables
             ->select($flds, FALSE)
             ->from(TBL_COMPLAINTS . ' c')
-            ->add_column('Action', $column, 'id');
+            ->add_column('Action', $column, 'id,status,addressed_by,addressed_date');
         
         echo $this->datatables->generate();
     }
     
+    
+    public function getAllComplaints($from_date=null, $to_date=null)
+    {
+        if($from_date !== null and $to_date === null)
+        { 
+            $this->db->where('c.complaint_date >= "' . $from_date . '"'); 
+            
+        } elseif($from_date !== null and $to_date !== null) {
+            
+            $to_date = fn_add_days_to_date($to_date, 1);
+            
+            $this->db->where('(c.complaint_date >= "' . $from_date . '" AND c.complaint_date < "' . $to_date . '")');
+            
+        }
+        
+        return $this->db
+            ->order_by('c.complaint_date', 'DESC')
+            ->select('c.*')
+            ->from($this->_table . ' c')
+            ->get()->result();
+        
+    }
     
 }

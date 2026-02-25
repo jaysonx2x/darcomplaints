@@ -5,15 +5,49 @@
  */
 
 var complaintFormID = '#complaint_form';
+var statusFormID = '#change_status_form';
 var complaintTable = null;
 $(function(){
     
-    showComplaintDatatables();
+    showComplaintDatatables(10, 'btn_0');
+    
+    $(statusFormID).validate({
+        errorClass: "js-error",
+        ignore: [],
+        errorPlacement: function(error, element) {
+            $( element ).closest( "form" ) .find( "small." + element.attr( "id" )).append( error );
+        },
+        rules : {
+            addressed_by : {
+                minlength : 1,
+                required : true,
+                normalizer: function( value ) {
+                    return $.trim( value );
+                }
+            },
+            status : {
+                min: 0,
+                required : true,
+            },
+            addressed_date : {
+                required : true,
+            },
+        },
+        errorElement: "span",
+        submitHandler: function() {
+            
+            submitComplaintStatusData();
+            
+        }
+    });
     
 });
 
 
-function showComplaintDatatables() {
+function showComplaintDatatables(status, buttonID) {
+    
+    $('#filter_container > button').removeClass('active');
+    $('#'+buttonID).addClass('active');
     
     complaintTable = $("#complaint_table").DataTable({
         "columnDefs": [
@@ -41,10 +75,16 @@ function showComplaintDatatables() {
                 },
                 "sortable": true, "searchable": true, 
             },
+            { "targets": 6, 
+                "render": function ( data, type, row ) {
+                    return MyUtils.fnComplaintStatus(data, row[7], row[8]);
+                },
+                "sortable": true, "searchable": true, "className": 'text-center'
+            },
             { "sortable": false, "searchable": false, "className": 'text-center v-align-mid', "targets": [7] },
-            { "visible": false, "searchable": false, "targets": [0,4,5] }
+            { "visible": false, "searchable": false, "targets": [0,4,5,7,8] }
         ],
-        "order": [[ 2, "asc" ]],
+        "order": [[ 2, "desc" ]],
         "paginationType": "full_numbers",
         "autoWidth": false,
         "destroy": true,
@@ -54,7 +94,7 @@ function showComplaintDatatables() {
         "displayLength" : 30 , // number of rows to display
         "lengthMenu": [[30, 50, 100, -1], [30, 50, 100, "All"]],
         "ajax": {
-             "url"   : BASE_URL + "complaints/loadComplaintsDT/",
+             "url"   : BASE_URL + "complaints/loadComplaintsDT/"+status,
              "type"  : "POST"
         },
     });
@@ -62,30 +102,41 @@ function showComplaintDatatables() {
 }
 
 
-function showPDFModal(complaintID) {
+function showPDFModal(link) {
     
-    alert('Coming soon!');
-    
-    var link = 'pdf/complaints/' + complaintID;
-
     console.log(link);
     
-    $('#THE_PDF').attr('src', BASE_URL+link);
-    
+    // Show loader
+    $("#pdf_loader").show();
+
+    // Clear previous PDF
+    $("#THE_PDF").empty();
+
+    // Create iframe + load handler
+    const iframe = $(`<iframe class="w-100 h-100" src="${BASE_URL + link}"></iframe>`);
+
+    // When PDF finishes loading → hide loader
+    iframe.on("load", function () {
+        $("#pdf_loader").hide();
+    });
+
+    // Append iframe
+    $("#THE_PDF").append(iframe);
+
     $('#pdf_modal .modal-dialog').addClass('modal-xl');
     $('#pdf_modal').modal('show');
 
 }
 
 
-function showComplaintDetailModal(feedbackID) {
+function showComplaintDetailModal(complaintID) {
     
     MyUtils.fnShowLoader();
     
     $.ajax({
         type: 'POST',
         data: { 
-            id : feedbackID
+            id : complaintID
         },
         dataType: 'json',
         url: BASE_URL + 'complaints/getComplaintDetails'
@@ -111,6 +162,54 @@ function showComplaintDetailModal(feedbackID) {
 
     });
     
+}
+
+
+function showStatusFormModal(complaintID, status, addressed_by, addressed_date) {
+    
+    $('#change_status_modal').modal('show');
+    $(statusFormID + ' #id').val(complaintID);
+    $(statusFormID + ' #status').val(status);
+    $(statusFormID + ' #addressed_by').val(addressed_by);
+    $(statusFormID + ' #addressed_date').val(MyUtils.fnFormatMySQLDate(addressed_date, 'ymd', '-'));
+    
+}
+
+
+function submitComplaintStatusData() {
+    
+    $(statusFormID + ' button[type=submit]').attr('disabled', true).html('Saving...');
+
+    $.ajax({
+        type: 'POST',
+        data: {
+            id              : $(statusFormID + ' #id').val(),
+            status          : $(statusFormID + ' #status').val(),
+            addressed_by    : $(statusFormID + ' #addressed_by').val(),
+            addressed_date  : $(statusFormID + ' #addressed_date').val()
+        },
+        dataType: 'json',
+        url: BASE_URL + 'complaints/saveComplaintStatus'
+    })
+    .done(function(data) {
+
+        if (data.status) {
+
+            MyUtils.fnShowToasts('success', 'Success', 'Complaint status updated!');
+    
+            $(statusFormID).data('validator').resetForm();
+            $(statusFormID)[0].reset();
+            
+            complaintTable.draw();
+            
+            $('#change_status_modal').modal('hide');
+            
+            $(statusFormID + ' button[type=submit]').attr('disabled', false).html('<i class="fa fa-check"></i> Submit');
+            
+        }
+
+    });
+
 }
 
 

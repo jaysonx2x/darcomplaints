@@ -64,16 +64,27 @@ function showFeedbackDatatables() {
 }
 
 
-function showPDFModal(feedbackID) {
+function showPDFModal(link) {
     
-    alert('Coming soon!');
-    
-    var link = 'pdf/feedbacks/' + feedbackID;
-
     console.log(link);
     
-    $('#THE_PDF').attr('src', BASE_URL+link);
-    
+    // Show loader
+    $("#pdf_loader").show();
+
+    // Clear previous PDF
+    $("#THE_PDF").empty();
+
+    // Create iframe + load handler
+    const iframe = $(`<iframe class="w-100 h-100" src="${BASE_URL + link}"></iframe>`);
+
+    // When PDF finishes loading → hide loader
+    iframe.on("load", function () {
+        $("#pdf_loader").hide();
+    });
+
+    // Append iframe
+    $("#THE_PDF").append(iframe);
+
     $('#pdf_modal .modal-dialog').addClass('modal-xl');
     $('#pdf_modal').modal('show');
 

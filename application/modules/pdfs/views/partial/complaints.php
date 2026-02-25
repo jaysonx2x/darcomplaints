@@ -2,8 +2,6 @@
 
         <?php
             $is_isset_reports = (isset($reports) and $reports);
-            $total = 0;
-            $total_addon = 0;
         ?>
 
         <style>
@@ -39,7 +37,7 @@
             .text-right {
                 text-align: right;
             }
-            .text-success {
+            .text-primary {
                 color: #707cd2;
             }
             .text-success {
@@ -79,25 +77,16 @@
                     <tr><td colspan="12" width="100%"></td></tr>
 
                     <tr>
-                        <td colspan="3" width="20%"
-                            ><span class="text-default">Year: <?php echo (isset($batch) and $batch) ? $batch : ''; ?></span>
-                        </td>
-                        <td colspan="9" width="80%"
-                            ><span class="text-default">Company: <?php echo (isset($company) and $company) ? $company : ''; ?></span>
-                        </td>
-                    </tr>
-
-                    <tr>
                         <td colspan="12" width="100%"
                             ><table style="padding: 2px; font-size: 10pt;" >
                                 <thead>
                                     <tr>
-                                        <th width="5%" class="table-th border-bottom-gray border-top-gray border-right-gray border-left-gray  text-center">#</th>
-                                        <th width="30%" class="table-th border-bottom-gray border-top-gray border-right-gray border-left-gray text-center">Name</th>
-                                        <th width="15%" class="table-th border-bottom-gray border-top-gray border-right-gray border-left-gray text-center">Student ID</th>
-                                        <th width="20%" class="table-th border-bottom-gray border-top-gray border-right-gray border-left-gray text-center">Assigned Company</th>
-                                        <th width="15%" class="table-th border-bottom-gray border-top-gray border-right-gray border-left-gray text-center">Hours Rendered</th>
-                                        <th width="15%" class="table-th border-bottom-gray border-top-gray border-right-gray border-left-gray text-center">Status</th>
+                                        <th width="4%" class="table-th border-bottom-gray border-top-gray border-right-gray border-left-gray  text-center">#</th>
+                                        <th width="11%" class="table-th border-bottom-gray border-top-gray border-right-gray border-left-gray text-center">Control No.</th>
+                                        <th width="11%" class="table-th border-bottom-gray border-top-gray border-right-gray border-left-gray text-center">Date</th>
+                                        <th width="20%" class="table-th border-bottom-gray border-top-gray border-right-gray border-left-gray text-center">Complainant</th>
+                                        <th width="14%" class="table-th border-bottom-gray border-top-gray border-right-gray border-left-gray text-center">Status</th>
+                                        <th width="40%" class="table-th border-bottom-gray border-top-gray border-right-gray border-left-gray text-center">Issues / Concern / Requests</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -107,21 +96,35 @@
                                             $ctr=0;
                                             foreach($reports as $report) 
                                             {
-                                                $status = fn_format_student_status($report->status);
+                                                $status = '';
+                                                switch(intval($report->status)) {
+                                                    case 0:
+                                                        $status = '<span class="text-warning">PENDING</span>';
+                                                        break;
+                                                    case 1:
+                                                        $status = '<span class="text-primary">IN-PROGRESS</span><br><small class="text-muted">By: ' . $report->addressed_by . '</small>';
+                                                        break;
+                                                    case 2:
+                                                        $status = '<span class="text-success">RESOLVED</span><br><small class="text-muted">By: ' . $report->addressed_by . '</small><br><small class="text-muted">Date: ' . fn_format_date($report->addressed_date, 'm/d/Y h:i A') . '</small>';
+                                                        break;
+                                                    case 3:
+                                                        $status = '<span class="text-danger">REJECTED</span><br><small class="text-muted">By: ' . $report->addressed_by . '</small><br><small class="text-muted">Date: ' . fn_format_date($report->addressed_date, 'm/d/Y h:i A') . '</small>';
+                                                        break;
+                                                }
                                     ?>
                                                 <tr>
                                                     <td class="table-td border-bottom-gray border-top-gray border-right-gray border-left-gray text-center"><?php echo ++$ctr; ?></td>
-                                                    <td class="table-td border-bottom-gray border-top-gray border-right-gray border-left-gray"><?php echo $report->fullname . '<br>' . $report->username; ?></td>
-                                                    <td class="table-td border-bottom-gray border-top-gray border-right-gray border-left-gray"><?php echo $report->id_no; ?></td>
-                                                    <td class="table-td border-bottom-gray border-top-gray border-right-gray border-left-gray"><?php echo $report->company_name; ?></td>
-                                                    <td class="table-td border-bottom-gray border-top-gray border-right-gray border-left-gray text-center"><?php echo $report->hours_rendered; ?></td>
-                                                    <td class="table-td border-bottom-gray border-top-gray border-right-gray border-left-gray text-center"><?php echo $status->text; ?></td>
+                                                    <td class="table-td border-bottom-gray border-top-gray border-right-gray border-left-gray text-center"><?php echo $report->control_no; ?></td>
+                                                    <td class="table-td border-bottom-gray border-top-gray border-right-gray border-left-gray text-center"><?php echo fn_format_date($report->complaint_date, 'm/d/Y'); ?></td>
+                                                    <td class="table-td border-bottom-gray border-top-gray border-right-gray border-left-gray"><?php echo $report->fullname; ?></td>
+                                                    <td class="table-td border-bottom-gray border-top-gray border-right-gray border-left-gray text-center"><?php echo $status; ?></td>
+                                                    <td class="table-td border-bottom-gray border-top-gray border-right-gray border-left-gray"><?php echo $report->concerns; ?></td>
                                                 </tr>
                                     <?php 
                                             }
                                         } else { 
                                     ?>
-                                            <tr><td colspan="2" class="text-center table-td border-bottom-gray border-top-gray border-right-gray border-left-gray">No payments found.</td></tr>
+                                            <tr><td colspan="2" class="text-center table-td border-bottom-gray border-top-gray border-right-gray border-left-gray">No complaints found.</td></tr>
                                     <?php } ?>
                                 </tbody>
                             </table>

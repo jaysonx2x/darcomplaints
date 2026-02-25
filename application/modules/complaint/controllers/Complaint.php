@@ -49,6 +49,27 @@ class Complaint extends MY_Controller {
     }
     
     
+    public function saveComplaintStatus() 
+    {
+        if ($this->input->is_ajax_request()) 
+        {
+            $post = $this->input->post();
+            
+            $result['status'] = $this->complaint->update(
+                intval($post['id']),
+                array(
+                    'status'         => intval($post['status']), 
+                    'addressed_by'   => trim($post['addressed_by']), 
+                    'addressed_date' => fn_format_date($post['addressed_date'], 'Y-m-d') . ' ' . fn_get_current_date('H:i:s')
+                ), 
+                false
+            );
+            
+            echo json_encode($result);
+        }
+    }
+    
+    
     public function getComplaintDetails() 
     {
         if ($this->input->is_ajax_request()) 
@@ -62,9 +83,9 @@ class Complaint extends MY_Controller {
     }
     
     
-    public function loadComplaintsDT() 
+    public function loadComplaintsDT($status=null) 
     {
-        $this->complaint->loadDatatableComplaints();
+        $this->complaint->loadDatatableComplaints($status);
     }
     
     
@@ -83,22 +104,50 @@ class Complaint extends MY_Controller {
     
     
     
+    public function pdfComplaint($complaint_id=0) 
+    {
+        if(intval($complaint_id)>0) 
+        {
+            $this->load->helper('pdf_helper');
+
+            $data['status']  = false;
+            $data['report_title']   = 'CLIENTELE INFORMATION SHEET (CIS)';
+            $data['output_title']   = 'COMPLAINT';
+            $data['is_landscape_orientation'] = false;
+
+            $data['report'] = (array) $this->complaint->get(intval($complaint_id));
+            if($data['report'])
+            {
+                $data['status'] = true;
+            }
+            
+            $data['view_url'] = 'pdfs/partial/complaint';
+
+            $this->load->view('pdfs/index', $data);
+            
+        } else {
+            show_404();
+        }
+            
+    }
+    
+    
+    
     public function pdfComplaints() 
     {
         $this->load->helper('pdf_helper');
         
         $data['status']  = false;
-        $data['report_title']   = 'COMPANIES';
-        $data['output_title']   = 'COMPANIES';
-        $data['is_landscape_orientation'] = false;
+        $data['report_title']   = 'COMPLAINTS';
+        $data['output_title']   = 'COMPLAINTS';
+        $data['is_landscape_orientation'] = true;
         
         $data['reports'] = (array) $this->complaint->getAllComplaints();
         if($data['reports'])
         {
             $data['status'] = true;
-
         }
-        $data['view_url'] = 'pdfs/partial/companies';
+        $data['view_url'] = 'pdfs/partial/complaints';
 
         $this->load->view('pdfs/index', $data);
             

@@ -16,7 +16,7 @@
 
             <div class="form-row">
                 <div class="form-group col-md-12">
-                    <label>Uti ng Kliyente: <small class="text-danger">*</small></label>
+                    <label>Uri ng Kliyente: <small class="text-danger">*</small></label>
                     <div class="form-inline">
                         <div class="custom-control custom-radio mr-3">
                             <input type="radio" class="custom-control-input" name="client_type" id="client_type1" value="1"> 
@@ -55,7 +55,7 @@
                     <small class="text-danger feedback_date"></small>
                 </div>
                 <div class="form-group col-md-3">
-                    <label>Sex: <small class="text-danger">*</small></label>
+                    <label>Kasarian: <small class="text-danger">*</small></label>
                     <select class="form-control form-control-sm" name="sex" id="sex">
                         <option value="0" disabled selected>-Pumili-</option>
                         <option value="1">Lalake</option>
@@ -64,7 +64,7 @@
                     <small class="text-danger sex"></small>
                 </div>
                 <div class="form-group col-md-3">
-                    <label>Age Group: <small class="text-danger">*</small></label>
+                    <label>Edad: <small class="text-danger">*</small></label>
                     <select class="form-control form-control-sm" name="age_group" id="age_group">
                         <option value="0" disabled selected>-Pumili-</option>
                         <option value="1">30 and below</option>
@@ -111,19 +111,19 @@
                 <div class="col-md-12 ml-3">
                     <div class="custom-control custom-radio">
                         <input type="radio" class="custom-control-input" name="cc1" id="cc1_1" value="1" > 
-                        <label class="custom-control-label" for="cc1_1">Alam ko ang CC at nakita ko ito sa napuntahang opisina.</label>
+                        <label class="custom-control-label" for="cc1_1">1. Alam ko ang CC at nakita ko ito sa napuntahang opisina.</label>
                     </div>
                     <div class="custom-control custom-radio">
                         <input type="radio" class="custom-control-input" name="cc1" id="cc1_2" value="2"> 
-                        <label class="custom-control-label" for="cc1_2">Alam ko ang CC pero hindi ko ito nakita sa napuntahang opisina.</label>
+                        <label class="custom-control-label" for="cc1_2">2. Alam ko ang CC pero hindi ko ito nakita sa napuntahang opisina.</label>
                     </div>
                     <div class="custom-control custom-radio">
                         <input type="radio" class="custom-control-input" name="cc1" id="cc1_3" value="3"> 
-                        <label class="custom-control-label" for="cc1_3">Nalaman ko ang CC nang makita ko ito sa napuntahang opisina.</label>
+                        <label class="custom-control-label" for="cc1_3">3. Nalaman ko ang CC nang makita ko ito sa napuntahang opisina.</label>
                     </div>
                     <div class="custom-control custom-radio">
                         <input type="radio" class="custom-control-input" name="cc1" id="cc1_4" value="4"> 
-                        <label class="custom-control-label" for="cc1_4">Hindi ko alam kung ano ang CC at wala akong nakita sa napuntahang opisina. <br>(Lagyan ng tsek ng 'N/A' sa CC2 at CC3 kapag ito ang iyong sagot)</label>
+                        <label class="custom-control-label" for="cc1_4">4. Hindi ko alam kung ano ang CC at wala akong nakita sa napuntahang opisina. <br>(Lagyan ng tsek ng 'N/A' sa CC2 at CC3 kapag ito ang iyong sagot)</label>
                     </div>
                 </div>
                 <div class="col-md-12">
@@ -138,25 +138,25 @@
                 <div class="col-md-5 ml-3">
                     <div class="custom-control custom-radio">
                         <input type="radio" class="custom-control-input" name="cc2" id="cc2_1" value="1"> 
-                        <label class="custom-control-label" for="cc2_1">Madaling makita</label>
+                        <label class="custom-control-label" for="cc2_1">1. Madaling makita</label>
                     </div>
                     <div class="custom-control custom-radio">
                         <input type="radio" class="custom-control-input" name="cc2" id="cc2_2" value="2"> 
-                        <label class="custom-control-label" for="cc2_2">Medyo madaling makita</label>
+                        <label class="custom-control-label" for="cc2_2">2. Medyo madaling makita</label>
                     </div>
                     <div class="custom-control custom-radio">
                         <input type="radio" class="custom-control-input" name="cc2" id="cc2_3" value="3"> 
-                        <label class="custom-control-label" for="cc2_3">Mahirap makita</label>
+                        <label class="custom-control-label" for="cc2_3">3. Mahirap makita</label>
                     </div>
                 </div>
                 <div class="col-md-5 ml-3">
                     <div class="custom-control custom-radio">
                         <input type="radio" class="custom-control-input" name="cc2" id="cc2_4" value="4"> 
-                        <label class="custom-control-label" for="cc2_4">Hindi nakita</label>
+                        <label class="custom-control-label" for="cc2_4">4. Hindi nakita</label>
                     </div>
                     <div class="custom-control custom-radio">
                         <input type="radio" class="custom-control-input" name="cc2" id="cc2_5" value="5"> 
-                        <label class="custom-control-label" for="cc2_5">N/A</label>
+                        <label class="custom-control-label" for="cc2_5">5. N/A</label>
                     </div>
                 </div>
                 <div class="col-md-12">
@@ -171,21 +171,21 @@
                 <div class="col-md-5 ml-3">
                     <div class="custom-control custom-radio">
                         <input type="radio" class="custom-control-input" name="cc3" id="cc3_1" value="1"> 
-                        <label class="custom-control-label" for="cc3_1">Sobrang nakatulong</label>
+                        <label class="custom-control-label" for="cc3_1">1. Sobrang nakatulong</label>
                     </div>
                     <div class="custom-control custom-radio">
                         <input type="radio" class="custom-control-input" name="cc3" id="cc3_2" value="2"> 
-                        <label class="custom-control-label" for="cc3_2">Nakatulong naman</label>
+                        <label class="custom-control-label" for="cc3_2">2. Nakatulong naman</label>
                     </div>
                 </div>
                 <div class="col-md-5 ml-3">
                     <div class="custom-control custom-radio">
                         <input type="radio" class="custom-control-input" name="cc3" id="cc3_3" value="3"> 
-                        <label class="custom-control-label" for="cc3_3">Hindi nakatulong</label>
+                        <label class="custom-control-label" for="cc3_3">3. Hindi nakatulong</label>
                     </div>
                     <div class="custom-control custom-radio">
                         <input type="radio" class="custom-control-input" name="cc3" id="cc3_4" value="4"> 
-                        <label class="custom-control-label" for="cc3_4">N/A</label>
+                        <label class="custom-control-label" for="cc3_4">4. N/A</label>
                     </div>
                 </div>
                 <div class="col-md-12">

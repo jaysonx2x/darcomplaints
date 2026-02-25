@@ -3,7 +3,7 @@
         <form id="feedback_form" method="post" action="#">
 
             <p class="text-center font-weight-bold text-capitalize" style="font-size: 16pt;">HELP US SERVE YOU BETTER!</p>
-            <p class="text-justify">This Client Satisfaction Measurement (CSM) tracks the customer experience of government offices. Your feedback will help us provide better service. Personal information shared will remain confidential.</p>
+            <p class="text-justify">This Client Satisfaction Measurement (CSM) tracks the customer experience of government offices. Your feedback on your <u>recently concluded transaction</u> will help this office provide a better service. Personal information shared will remain be kept confidential and you always have the option to not answer this form.</p>
 
             <div class="row hidden">
                 <div class="form-group col-sm-12">
@@ -104,24 +104,24 @@
 
             <div class="row mt-3">
                 <div class="col-md-12">
-                    <label><strong>CC1. <small class="text-danger">*</small></strong> Which of the following best describes your awareness of a CC?</label>
+                    <label><strong>CC1 <small class="text-danger">*</small></strong> Which of the following best describes your awareness of a CC?</label>
                 </div>
                 <div class="col-md-12 ml-3">
                     <div class="custom-control custom-radio">
                         <input type="radio" class="custom-control-input" name="cc1" id="cc1_1" value="1" > 
-                        <label class="custom-control-label" for="cc1_1">I know what a CC is and I saw this office’s CC.</label>
+                        <label class="custom-control-label" for="cc1_1">1. I know what a CC is and I saw this office’s CC.</label>
                     </div>
                     <div class="custom-control custom-radio">
                         <input type="radio" class="custom-control-input" name="cc1" id="cc1_2" value="2"> 
-                        <label class="custom-control-label" for="cc1_2">I know what a CC is but I did NOT see this office’s CC.</label>
+                        <label class="custom-control-label" for="cc1_2">2. I know what a CC is but I did NOT see this office’s CC.</label>
                     </div>
                     <div class="custom-control custom-radio">
                         <input type="radio" class="custom-control-input" name="cc1" id="cc1_3" value="3"> 
-                        <label class="custom-control-label" for="cc1_3">I learned of the CC only when I saw this office’s CC.</label>
+                        <label class="custom-control-label" for="cc1_3">3. I learned of the CC only when I saw this office’s CC.</label>
                     </div>
                     <div class="custom-control custom-radio">
                         <input type="radio" class="custom-control-input" name="cc1" id="cc1_4" value="4"> 
-                        <label class="custom-control-label" for="cc1_4">I do not know what a CC is and did not see one in this office.</label>
+                        <label class="custom-control-label" for="cc1_4">4. I do not know what a CC is and did not see one in this office.</label>
                     </div>
                 </div>
                 <div class="col-md-12">
@@ -131,30 +131,30 @@
 
             <div class="row mt-3">
                 <div class="col-md-12">
-                    <label><strong>CC2. <small class="text-danger">*</small></strong> If aware of CC (asnwered 1-3 in CC1), would you say that the CC of this office was...?</label>
+                    <label><strong>CC2 <small class="text-danger">*</small></strong> If aware of CC (answered 1-3 in CC1), would you say that the CC of this office was...?</label>
                 </div>
                 <div class="col-md-5 ml-3">
                     <div class="custom-control custom-radio">
                         <input type="radio" class="custom-control-input" name="cc2" id="cc2_1" value="1"> 
-                        <label class="custom-control-label" for="cc2_1">Easy to see</label>
+                        <label class="custom-control-label" for="cc2_1">1. Easy to see</label>
                     </div>
                     <div class="custom-control custom-radio">
                         <input type="radio" class="custom-control-input" name="cc2" id="cc2_2" value="2"> 
-                        <label class="custom-control-label" for="cc2_2">Somewhat easy to see</label>
+                        <label class="custom-control-label" for="cc2_2">2. Somewhat easy to see</label>
                     </div>
                     <div class="custom-control custom-radio">
                         <input type="radio" class="custom-control-input" name="cc2" id="cc2_3" value="3"> 
-                        <label class="custom-control-label" for="cc2_3">Difficult to see</label>
+                        <label class="custom-control-label" for="cc2_3">3. Difficult to see</label>
                     </div>
                 </div>
                 <div class="col-md-5">
                     <div class="custom-control custom-radio">
                         <input type="radio" class="custom-control-input" name="cc2" id="cc2_4" value="4"> 
-                        <label class="custom-control-label" for="cc2_4">Not visible at all</label>
+                        <label class="custom-control-label" for="cc2_4">4. Not visible at all</label>
                     </div>
                     <div class="custom-control custom-radio">
                         <input type="radio" class="custom-control-input" name="cc2" id="cc2_5" value="5"> 
-                        <label class="custom-control-label" for="cc2_5">N/A</label>
+                        <label class="custom-control-label" for="cc2_5">5. N/A</label>
                     </div>
                 </div>
                 <div class="col-md-12">
@@ -164,26 +164,26 @@
 
             <div class="row mt-3">
                 <div class="col-md-12">
-                    <label><strong>CC3. <small class="text-danger">*</small></strong> If aware of CC (asnwered 1-3 in CC1), how much did the CC help you in your transaction?</label>
+                    <label><strong>CC3 <small class="text-danger">*</small></strong> If aware of CC (answered 1-3 in CC1), how much did the CC help you in your transaction?</label>
                 </div>
                 <div class="col-md-5 ml-3">
                     <div class="custom-control custom-radio">
                         <input type="radio" class="custom-control-input" name="cc3" id="cc3_1" value="1"> 
-                        <label class="custom-control-label" for="cc3_1">Helped very much</label>
+                        <label class="custom-control-label" for="cc3_1">1. Helped very much</label>
                     </div>
                     <div class="custom-control custom-radio">
                         <input type="radio" class="custom-control-input" name="cc3" id="cc3_2" value="2"> 
-                        <label class="custom-control-label" for="cc3_2">Somewhat helped</label>
+                        <label class="custom-control-label" for="cc3_2">2. Somewhat helped</label>
                     </div>
                 </div>
                 <div class="col-md-5">
                     <div class="custom-control custom-radio">
                         <input type="radio" class="custom-control-input" name="cc3" id="cc3_3" value="3"> 
-                        <label class="custom-control-label" for="cc3_3">Did not help</label>
+                        <label class="custom-control-label" for="cc3_3">3. Did not help</label>
                     </div>
                     <div class="custom-control custom-radio">
                         <input type="radio" class="custom-control-input" name="cc3" id="cc3_4" value="4"> 
-                        <label class="custom-control-label" for="cc3_4">N/A</label>
+                        <label class="custom-control-label" for="cc3_4">4. N/A</label>
                     </div>
                 </div>
                 <div class="col-md-12">

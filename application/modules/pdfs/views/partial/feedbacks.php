@@ -2,8 +2,6 @@
 
         <?php
             $is_isset_reports = (isset($reports) and $reports);
-            $total = 0;
-            $total_addon = 0;
         ?>
 
         <style>
@@ -84,10 +82,12 @@
                                 <thead>
                                     <tr>
                                         <th width="5%" class="table-th border-bottom-gray border-top-gray border-right-gray border-left-gray  text-center">#</th>
-                                        <th width="25%" class="table-th border-bottom-gray border-top-gray border-right-gray border-left-gray text-center">Company Name</th>
-                                        <th width="40%" class="table-th border-bottom-gray border-top-gray border-right-gray border-left-gray text-center">Address</th>
-                                        <th width="15%" class="table-th border-bottom-gray border-top-gray border-right-gray border-left-gray text-center">Phone</th>
-                                        <th width="15%" class="table-th border-bottom-gray border-top-gray border-right-gray border-left-gray text-center">Email</th>
+                                        <th width="10%" class="table-th border-bottom-gray border-top-gray border-right-gray border-left-gray text-center">Date</th>
+                                        <th width="10%" class="table-th border-bottom-gray border-top-gray border-right-gray border-left-gray text-center">Client Type</th>
+                                        <th width="10%" class="table-th border-bottom-gray border-top-gray border-right-gray border-left-gray text-center">Age Group</th>
+                                        <th width="10%" class="table-th border-bottom-gray border-top-gray border-right-gray border-left-gray text-center">Region</th>
+                                        <th width="12%" class="table-th border-bottom-gray border-top-gray border-right-gray border-left-gray text-center">Service Availed</th>
+                                        <th width="43%" class="table-th border-bottom-gray border-top-gray border-right-gray border-left-gray text-center">Suggestions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -99,17 +99,19 @@
                                             {
                                     ?>
                                                 <tr>
-                                                    <td class="table-td border-bottom-gray border-top-gray border-right-gray border-left-gray"><?php echo ++$ctr; ?></td>
-                                                    <td class="table-td border-bottom-gray border-top-gray border-right-gray border-left-gray"><?php echo $report->company_name; ?></td>
-                                                    <td class="table-td border-bottom-gray border-top-gray border-right-gray border-left-gray"><?php echo $report->address; ?></td>
-                                                    <td class="table-td border-bottom-gray border-top-gray border-right-gray border-left-gray"><?php echo $report->phone; ?></td>
-                                                    <td class="table-td border-bottom-gray border-top-gray border-right-gray border-left-gray"><?php echo $report->email; ?></td>
+                                                    <td class="table-td border-bottom-gray border-top-gray border-right-gray border-left-gray text-center"><?php echo ++$ctr; ?></td>
+                                                    <td class="table-td border-bottom-gray border-top-gray border-right-gray border-left-gray text-center"><?php echo fn_format_date($report->feedback_date, 'm/d/Y'); ?></td>
+                                                    <td class="table-td border-bottom-gray border-top-gray border-right-gray border-left-gray text-center"><?php echo fn_format_client_type($report->client_type) ?></td>
+                                                    <td class="table-td border-bottom-gray border-top-gray border-right-gray border-left-gray text-center"><?php echo fn_format_age_group($report->age_group); ?></td>
+                                                    <td class="table-td border-bottom-gray border-top-gray border-right-gray border-left-gray text-center"><?php echo $report->region; ?></td>
+                                                    <td class="table-td border-bottom-gray border-top-gray border-right-gray border-left-gray text-center"><?php echo $report->service_availed; ?></td>
+                                                    <td class="table-td border-bottom-gray border-top-gray border-right-gray border-left-gray text-center"><?php echo $report->suggestions; ?></td>
                                                 </tr>
                                     <?php 
                                             }
                                         } else { 
                                     ?>
-                                            <tr><td colspan="2" class="text-center table-td border-bottom-gray border-top-gray border-right-gray border-left-gray">No payments found.</td></tr>
+                                            <tr><td colspan="2" class="text-center table-td border-bottom-gray border-top-gray border-right-gray border-left-gray">No complaints found.</td></tr>
                                     <?php } ?>
                                 </tbody>
                             </table>

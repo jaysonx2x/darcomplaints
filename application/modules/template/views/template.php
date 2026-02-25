@@ -27,6 +27,7 @@
             
             <?php $this->load->view('user/image_cropper_modal'); ?>
             <?php $this->load->view('user/cropped_preview_modal'); ?>
+            <?php $this->load->view('pdfs/pdf_modal'); ?>
             
         </div>
 

@@ -18,8 +18,8 @@ class Dashboard extends ValidatedPages {
         
         $this->data['content'] = 'dashboard/dashboard';
         
-        $this->data['announcement_count']   = count($this->announcement->getAnnouncementsByType());
-        $this->data['complaint_count']      = $this->complaint->count();
+        $this->data['pending_complaints_count']    = $this->complaint->count(array('status' => 0));
+        $this->data['resolved_complaints_count']   = $this->complaint->count(array('status' => 2));
         $this->data['feedback_count']       = $this->feedback->count();
         $this->data['user_count']           = $this->user->count();
         

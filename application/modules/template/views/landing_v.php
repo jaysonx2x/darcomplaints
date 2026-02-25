@@ -59,29 +59,38 @@
         <!-- Quick Links -->
         <div class="container mt-4">
             <div class="row text-center">
-                <div class="col-md-6 mb-3">
-                    <div class="card p-4">
-                        <i class="fa fa-comments fa-3x text-success mb-3"></i>
-                        <h5>Submit Feedback</h5>
+                <div class="col-md-4 mb-3">
+                    <div class="card p-4" style="align-items: center">
+                        <img class="img img-fluid img-thumbnail mb-3" style="width: 80%;" src="<?php echo base_url('assets/img/qr-complaint.png'); ?>" />
+                        <h5>File a Complaint</h5>
+                        <p>Report issues or concerns about DAR services.</p>
+                        <a href="<?php echo base_url('complaint'); ?>" class="btn btn-danger">File a Complaint</a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card p-4" style="align-items: center">
+                        <img class="img img-fluid img-thumbnail mb-3" style="width: 80%;" src="<?php echo base_url('assets/img/qr-english.png'); ?>" />
+                        <h5>English Feedback</h5>
                         <p>Share your thoughts about our service quality.</p>
                         <!-- Button Group -->
                         <div class="d-flex flex-column flex-sm-row justify-content-center">
                             <a href="<?php echo base_url('feedback/english'); ?>" class="btn btn-success mb-2 mb-sm-0 mr-sm-2">
                                 Give Feedback (English)
                             </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card p-4" style="align-items: center">
+                        <img class="img img-fluid img-thumbnail mb-3" style="width: 80%;" src="<?php echo base_url('assets/img/qr-tagalog.png'); ?>" />
+                        <h5>Tagalog Feedback</h5>
+                        <p>Share your thoughts about our service quality.</p>
+                        <!-- Button Group -->
+                        <div class="d-flex flex-column flex-sm-row justify-content-center">
                             <a href="<?php echo base_url('feedback/tagalog'); ?>" class="btn btn-success">
                                 Give Feedback (Tagalog)
                             </a>
                         </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 mb-3">
-                    <div class="card p-4">
-                        <i class="fa fa-exclamation-circle fa-3x text-danger mb-3"></i>
-                        <h5>File a Complaint</h5>
-                        <p>Report issues or concerns about DAR services.</p>
-                        <a href="<?php echo base_url('complaint'); ?>" class="btn btn-danger">File a Complaint</a>
                     </div>
                 </div>
             </div>

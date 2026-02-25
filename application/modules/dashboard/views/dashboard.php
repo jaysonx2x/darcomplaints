@@ -24,13 +24,13 @@
             <div class="row">
                 
                 <div class="col-md-3 mb-4">
-                    <a href="<?php echo base_url('announcements'); ?>" class="text-decoration-none text-reset">
+                    <a href="<?php echo base_url('complaints'); ?>" class="text-decoration-none text-reset">
                         <div class="card p-4 d-flex">
                             <div class="d-flex align-items-center">
-                                <i class="fa fa-bullhorn fa-2x text-success mr-3"></i>
+                                <i class="fa fa-exclamation-circle fa-2x text-warning mr-3"></i>
                                 <div>
-                                    <h5 class="mb-1">Announcements</h5>
-                                    <p class="text-muted mb-0"><?php echo (isset($announcement_count) and $announcement_count) ? $announcement_count : '0' ?> announcements</p>
+                                    <h5 class="mb-1">Pending Complaints</h5>
+                                    <p class="text-muted mb-0"><?php echo (isset($pending_complaints_count) and $pending_complaints_count) ? $pending_complaints_count : '0' ?> pending complaints</p>
                                 </div>
                             </div>
                         </div>
@@ -43,9 +43,9 @@
                             <div class="d-flex align-items-center">
                                 <i class="fa fa-exclamation-circle fa-2x text-danger mr-3"></i>
                                 <div>
-                                    <h5 class="mb-1">Complaints</h5>
+                                    <h5 class="mb-1">Resolved Complaints</h5>
                                     <p class="text-muted mb-0">
-                                        <?php echo (isset($complaint_count) && $complaint_count) ? $complaint_count : '0' ?> complaints
+                                        <?php echo (isset($resolved_complaints_count) && $resolved_complaints_count) ? $resolved_complaints_count : '0' ?> resolved complaints
                                     </p>
                                 </div>
                             </div>

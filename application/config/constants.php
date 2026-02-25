@@ -89,6 +89,7 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
  defined('SYSTEM_TITLE')                OR define('SYSTEM_TITLE'            , "Public Assistance Coordinating and Complaints Unit Online System");
  defined('SYSTEM_ALIAS')                OR define('SYSTEM_ALIAS'            , 'PACCUOS'); //small
  defined('APP_LOGO_LINK')               OR define('APP_LOGO_LINK'           , 'assets/img/dar.png');
+ defined('DAR_LOGO_LINK')               OR define('DAR_LOGO_LINK'           , 'assets/img/dar.svg');
  
 // SESSIONS
 defined('SESS_USER_ID')                 OR define('SESS_USER_ID'            , 'userId');

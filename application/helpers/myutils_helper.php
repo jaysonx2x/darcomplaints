@@ -425,6 +425,97 @@ if ( ! function_exists('fn_format_user_type'))
 }
 
 
+// ------------------------------------------------------------------------
+
+/**
+*
+* @access	public
+* @param	mixed
+* @return	mixed
+* 
+* @version      Nov 19, 2014 (Tiny modification by Jaysonx <juanojayson@gmail.com>
+*/
+if ( ! function_exists('fn_format_client_type'))
+{
+	function fn_format_client_type($val='')
+	{
+            $user_type = '';
+            switch ($val)
+            {
+                case 1: 
+                    $user_type = 'CITIZEN'; 
+                    break;
+                
+                case 2: 
+                    $user_type = 'STUDENT'; 
+                    break;
+                
+                case 3: 
+                    $user_type = 'GOVT'; 
+                    break;
+                
+                case 4: 
+                    $user_type = 'FARMER'; 
+                    break;
+                
+                case 5: 
+                    $user_type = 'LANDOWNER'; 
+                    break;
+                
+                case 6: 
+                    $user_type = 'OTHER'; 
+                    break;
+                
+            }
+            
+            return $user_type;
+	}
+}
+
+// ------------------------------------------------------------------------
+
+/**
+*
+* @access	public
+* @param	mixed
+* @return	mixed
+* 
+* @version      Nov 19, 2014 (Tiny modification by Jaysonx <juanojayson@gmail.com>
+*/
+if ( ! function_exists('fn_format_age_group'))
+{
+	function fn_format_age_group($val='')
+	{
+            $user_type = '';
+            switch ($val)
+            {
+                case 1: 
+                    $user_type = '<30'; 
+                    break;
+                
+                case 2: 
+                    $user_type = '31-40'; 
+                    break;
+                
+                case 3: 
+                    $user_type = '41-50'; 
+                    break;
+                
+                case 4: 
+                    $user_type = '51-60'; 
+                    break;
+                
+                case 5: 
+                    $user_type = '>51'; 
+                    break;
+                
+            }
+            
+            return $user_type;
+	}
+}
+
+
 
 // ------------------------------------------------------------------------
 

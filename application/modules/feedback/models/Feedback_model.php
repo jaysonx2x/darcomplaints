@@ -147,12 +147,12 @@ class Feedback_model extends MY_Model
         $this->load->library('Datatables');
         
         $column = '';
-        $column .= '<span class="btn btn-sm btn-info" onclick="showPDFModal($1);" title="Print Feedback">';
+        $column .= '<span class="btn btn-sm btn-info" onclick="showPDFModal(\'pdf/feedback/$1\');" title="Print Feedback">';
             $column .= '<i class="fa fa-print"></i>';
         $column .= '</span> ';
-        $column .= '<span class="btn btn-sm btn-danger" onclick="confirmDeleteFeedback($1);" title="Delete Feedback">';
-            $column .= '<i class="fa fa-trash"></i>';
-        $column .= '</span>';
+//        $column .= '<span class="btn btn-sm btn-danger" onclick="confirmDeleteFeedback($1);" title="Delete Feedback">';
+//            $column .= '<i class="fa fa-trash"></i>';
+//        $column .= '</span>';
             
         $flds  = 'f.id, f.feedback_date, f.client_type, f.age_group, f.region, f.service_availed, f.suggestions';
         
@@ -162,6 +162,31 @@ class Feedback_model extends MY_Model
             ->add_column('Action', $column, 'id');
         
         echo $this->datatables->generate();
+    }
+    
+    
+    
+    
+    public function getAllFeedbacks($from_date=null, $to_date=null)
+    {
+        if($from_date !== null and $to_date === null)
+        { 
+            $this->db->where('f.feedback_date >= "' . $from_date . '"'); 
+            
+        } elseif($from_date !== null and $to_date !== null) {
+            
+            $to_date = fn_add_days_to_date($to_date, 1);
+            
+            $this->db->where('(f.feedback_date >= "' . $from_date . '" AND f.feedback_date < "' . $to_date . '")');
+            
+        }
+        
+        return $this->db
+            ->order_by('f.feedback_date', 'DESC')
+            ->select('f.*')
+            ->from($this->_table . ' f')
+            ->get()->result();
+        
     }
     
     

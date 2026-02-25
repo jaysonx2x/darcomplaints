@@ -15,7 +15,7 @@
             <div class="right-section d-flex align-items-center">
 
                 <!-- Notifications -->
-                <div class="dropdown mr-3">
+<!--                <div class="dropdown mr-3">
                     <a href="#" class="nav-link position-relative" id="notifDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-bell fa-lg text-dark"></i>
                         <span class="badge badge-danger position-absolute" style="top: 0; right: 4px; font-size: 0.7rem;">3</span>
@@ -28,7 +28,7 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item text-center small text-muted" href="#">View all</a>
                     </div>
-                </div>
+                </div>-->
 
                 <!-- User Profile -->
                 <div class="dropdown d-flex align-items-center">
