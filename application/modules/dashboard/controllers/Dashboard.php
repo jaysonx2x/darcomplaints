@@ -18,10 +18,18 @@ class Dashboard extends ValidatedPages {
         
         $this->data['content'] = 'dashboard/dashboard';
         
-        $this->data['pending_complaints_count']    = $this->complaint->count(array('status' => 0));
-        $this->data['resolved_complaints_count']   = $this->complaint->count(array('status' => 2));
+        $this->data['announcement_count']   = $this->announcement->count();
+        $this->data['complaint_count']      = $this->complaint->count();
         $this->data['feedback_count']       = $this->feedback->count();
         $this->data['user_count']           = $this->user->count();
+        
+        $this->data['complaint_analytics'] = $this->complaint->getComplaintAnalyticsByStatus();
+        $this->data['monthly_trends']      = $this->complaint->getMonthlyComplaintTrends(6);
+        
+        $this->data['module_js'] = array(
+//            'https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js'
+            base_url('assets/vendors/chartjs/chartjs.js')
+        );
         
         $this->template->show_template($this->data);
         

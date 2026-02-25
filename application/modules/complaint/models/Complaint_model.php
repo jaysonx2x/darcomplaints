@@ -111,4 +111,65 @@ class Complaint_model extends MY_Model
         
     }
     
+    
+    public function getComplaintAnalyticsByStatus()
+    {
+        $analytics = array(
+            'pending'   => 0,
+            'resolved'  => 0,
+            'rejected'  => 0,
+            'total'     => 0
+        );
+        
+        $analytics['pending']  = $this->count(array('status' => 0));
+        $analytics['resolved'] = $this->count(array('status' => 2));
+        $analytics['rejected'] = $this->count(array('status' => 3));
+        $analytics['total']    = $this->count();
+        
+        return $analytics;
+    }
+    
+    
+    public function getMonthlyComplaintTrends($months = 6)
+    {
+        $trends = array();
+        
+        for ($i = $months - 1; $i >= 0; $i--) {
+            $month_start = date('Y-m-01', strtotime("-$i months"));
+            $month_end = date('Y-m-t', strtotime("-$i months"));
+            $month_label = date('M Y', strtotime("-$i months"));
+            
+            $pending = $this->db
+                ->where('status', 0)
+                ->where('complaint_date >=', $month_start)
+                ->where('complaint_date <=', $month_end)
+                ->from($this->_table)
+                ->count_all_results();
+                
+            $resolved = $this->db
+                ->where('status', 2)
+                ->where('complaint_date >=', $month_start)
+                ->where('complaint_date <=', $month_end)
+                ->from($this->_table)
+                ->count_all_results();
+                
+            $rejected = $this->db
+                ->where('status', 3)
+                ->where('complaint_date >=', $month_start)
+                ->where('complaint_date <=', $month_end)
+                ->from($this->_table)
+                ->count_all_results();
+            
+            $trends[] = array(
+                'month'    => $month_label,
+                'pending'  => $pending,
+                'resolved' => $resolved,
+                'rejected' => $rejected,
+                'total'    => $pending + $resolved + $rejected
+            );
+        }
+        
+        return $trends;
+    }
+    
 }

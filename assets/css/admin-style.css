@@ -272,3 +272,65 @@ div.gallery:hover .delete-btn {
     transform: translate(-50%, -50%);
     text-align: center;
 }
+
+/* Analytics Card Borders */
+.border-left-warning {
+    border-left: 4px solid #ffc107 !important;
+}
+
+.border-left-success {
+    border-left: 4px solid #28a745 !important;
+}
+
+.border-left-danger {
+    border-left: 4px solid #dc3545 !important;
+}
+
+.border-left-primary {
+    border-left: 4px solid #007bff !important;
+}
+
+/* Print Styles */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+    
+    .sidebar {
+        display: none !important;
+    }
+    
+    .logo-bar {
+        display: none !important;
+    }
+    
+    .wrapper {
+        padding-top: 0 !important;
+    }
+    
+    .content {
+        padding: 0 !important;
+    }
+    
+    .card {
+        page-break-inside: avoid;
+        border: 1px solid #ddd !important;
+        box-shadow: none !important;
+    }
+    
+    .row {
+        page-break-inside: avoid;
+    }
+    
+    body {
+        background-color: white !important;
+    }
+    
+    h4, h5 {
+        color: #000 !important;
+    }
+    
+    canvas {
+        max-width: 100% !important;
+    }
+}
