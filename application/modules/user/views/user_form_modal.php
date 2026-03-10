@@ -119,7 +119,6 @@
                                 <option value="0" selected disabled>--Select--</option>
                                 <option value="1">Administrator</option>
                                 <option value="2">Staff</option>
-                                <option value="3">Guest</option>
                             </select>
                             <small class="text-danger user_type"></small>
                         </div>

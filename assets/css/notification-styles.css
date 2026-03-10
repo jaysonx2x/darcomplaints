@@ -1,0 +1,136 @@
+/* Notification Dropdown Styles */
+.notification-item {
+    padding: 12px 16px;
+    border-bottom: 1px solid #e9ecef;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    color: #212529;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.notification-item:hover {
+    background-color: #f8f9fa !important;
+    text-decoration: none;
+    color: #212529;
+}
+
+.notification-item:last-child {
+    border-bottom: none;
+}
+
+.notification-item .fa {
+    font-size: 1.2rem;
+    width: 24px;
+    min-width: 24px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.notification-item .flex-grow-1 {
+    min-width: 0;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.notification-item .flex-grow-1 > div,
+.notification-item .flex-grow-1 > small {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+
+.notification-badge {
+    min-width: 18px;
+    height: 18px;
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-size: 0.65rem;
+    line-height: 1.2;
+}
+
+#notificationList {
+    max-height: 350px;
+    overflow-y: auto;
+}
+
+#notificationList::-webkit-scrollbar {
+    width: 6px;
+}
+
+#notificationList::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+#notificationList::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+}
+
+#notificationList::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Notification Modal Styles */
+.notification-modal-header {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    color: white;
+    border-radius: 5px 5px 0 0;
+}
+
+.notification-modal-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.notification-detail-label {
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 5px;
+}
+
+.notification-detail-value {
+    color: #212529;
+    margin-bottom: 15px;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 5px;
+    white-space: pre-line;
+}
+
+.notification-type-badge {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.notification-type-complaint {
+    background-color: #dc3545;
+    color: white;
+}
+
+.notification-type-feedback {
+    background-color: #28a745;
+    color: white;
+}
+
+.notification-type-announcement {
+    background-color: #17a2b8;
+    color: white;
+}
+
+.notification-date {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+.notification-unread-indicator {
+    width: 8px;
+    height: 8px;
+    background-color: #007bff;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 8px;
+}

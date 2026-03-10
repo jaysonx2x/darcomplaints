@@ -41,6 +41,5 @@
         </div>
         
         <?php // USER FORM MODAL ?>
-        <?php $this->load->view('complaint/complaint_detail_modal'); ?>
         <?php $this->load->view('complaint/change_status_modal'); ?>
         <?php // USER FORM MODAL ?>

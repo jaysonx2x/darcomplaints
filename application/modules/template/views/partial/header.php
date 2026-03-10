@@ -20,6 +20,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/vendors/toastr/toastr.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/vendors/sweetalert/css/sweetalert.css'); ?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/css/admin-style.css'); ?>" />
+        <link rel="stylesheet" href="<?php echo base_url('assets/css/notification-styles.css'); ?>" />
         
         <?php 
             if(isset($module_css) AND count($module_css) > 0) :

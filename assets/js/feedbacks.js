@@ -46,7 +46,7 @@ function showFeedbackDatatables() {
             { "sortable": false, "searchable": false, "className": 'text-center v-align-mid', "targets": [7] },
             { "visible": false, "searchable": false, "targets": [0] }
         ],
-        "order": [[ 2, "asc" ]],
+        "order": [[ 1, "desc" ]],
         "paginationType": "full_numbers",
         "autoWidth": false,
         "destroy": true,
@@ -92,58 +92,58 @@ function showPDFModal(link) {
 
 
 
-function showFeedbackDetailModal(feedbackID) {
+// function showFeedbackDetailModal(feedbackID) {
     
-    MyUtils.fnShowLoader();
+//     MyUtils.fnShowLoader();
     
-    $.ajax({
-        type: 'POST',
-        data: { 
-            id : feedbackID
-        },
-        dataType: 'json',
-        url: BASE_URL + 'feedbacks/getFeedbackDetails'
-    })
-    .done(function(data) {
+//     $.ajax({
+//         type: 'POST',
+//         data: { 
+//             id : feedbackID
+//         },
+//         dataType: 'json',
+//         url: BASE_URL + 'feedbacks/getFeedbackDetails'
+//     })
+//     .done(function(data) {
         
-        console.log(data);
+//         console.log(data);
 
-        if (data.feedback) {
+//         if (data.feedback) {
             
-            $('#feedback_detail_'+data.feedback.lang+'_modal .modal-title').text('Feedback - ' + data.feedback.feedback_date);
+//             $('#feedback_detail_'+data.feedback.lang+'_modal .modal-title').text('Feedback - ' + data.feedback.feedback_date);
             
-            $.each(data.feedback, function(key, value) {
-                $('#feedback_detail_'+data.feedback.lang+'_modal #' + key).attr('disabled', true).val(value);
+//             $.each(data.feedback, function(key, value) {
+//                 $('#feedback_detail_'+data.feedback.lang+'_modal #' + key).attr('disabled', true).val(value);
                 
-                var $el = $("#feedback_detail_"+data.feedback.lang+"_modal [name='" + key + "']");
-                var tag = $el.prop("nodeName");
+//                 var $el = $("#feedback_detail_"+data.feedback.lang+"_modal [name='" + key + "']");
+//                 var tag = $el.prop("nodeName");
                 
-                switch (tag) {
-                    case 'INPUT':
-                    case 'input':
-                        var inputType = $el.attr("type");
-                        switch (inputType) {
-                            case 'checkbox':
-                                break;
-                            case 'radio':
-                                console.log(key + ": " + value);
-                                $("#feedback_detail_"+data.feedback.lang+"_modal [name='" + key + "'][value='" + value + "']").attr('disabled', true).attr('checked', true);
-                                break;
-                        }
-                        break;
-                }
+//                 switch (tag) {
+//                     case 'INPUT':
+//                     case 'input':
+//                         var inputType = $el.attr("type");
+//                         switch (inputType) {
+//                             case 'checkbox':
+//                                 break;
+//                             case 'radio':
+//                                 console.log(key + ": " + value);
+//                                 $("#feedback_detail_"+data.feedback.lang+"_modal [name='" + key + "'][value='" + value + "']").attr('disabled', true).attr('checked', true);
+//                                 break;
+//                         }
+//                         break;
+//                 }
                 
-            });
+//             });
             
-        }
+//         }
         
-        $('#feedback_detail_'+data.feedback.lang+'_modal').modal('show');
+//         $('#feedback_detail_'+data.feedback.lang+'_modal').modal('show');
 
-        MyUtils.fnHideLoader();
+//         MyUtils.fnHideLoader();
 
-    });
+//     });
     
-}
+// }
 
 
 

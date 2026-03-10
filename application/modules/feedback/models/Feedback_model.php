@@ -133,7 +133,7 @@ class Feedback_model extends MY_Model
             
         } else { // ADD
             
-            $result = $this->insert($data, false);
+            $result = ($this->insert($data, false)) ? $this->db->insert_id() : 0;
             
         }
         

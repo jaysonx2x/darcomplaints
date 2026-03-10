@@ -129,40 +129,40 @@ function showPDFModal(link) {
 }
 
 
-function showComplaintDetailModal(complaintID) {
+// function showComplaintDetailModal(complaintID) {
     
-    MyUtils.fnShowLoader();
+//     MyUtils.fnShowLoader();
     
-    $.ajax({
-        type: 'POST',
-        data: { 
-            id : complaintID
-        },
-        dataType: 'json',
-        url: BASE_URL + 'complaints/getComplaintDetails'
-    })
-    .done(function(data) {
+//     $.ajax({
+//         type: 'POST',
+//         data: { 
+//             id : complaintID
+//         },
+//         dataType: 'json',
+//         url: BASE_URL + 'complaints/getComplaintDetails'
+//     })
+//     .done(function(data) {
         
-        console.log(data);
+//         console.log(data);
 
-        if (data.complaint) {
+//         if (data.complaint) {
             
-            $('#complaint_detail_modal .modal-title').text('Complaint - ' + data.complaint.control_no);
+//             $('#complaint_detail_modal .modal-title').text('Complaint - ' + data.complaint.control_no);
             
-            $.each(data.complaint, function(key, value) {
-                console.log(key + ": " + value);
-                $('#complaint_detail_modal #' + key).attr('disabled', true).val(value);
-            });
+//             $.each(data.complaint, function(key, value) {
+//                 console.log(key + ": " + value);
+//                 $('#complaint_detail_modal #' + key).attr('disabled', true).val(value);
+//             });
             
-        }
+//         }
         
-        $('#complaint_detail_modal').modal('show');
+//         $('#complaint_detail_modal').modal('show');
 
-        MyUtils.fnHideLoader();
+//         MyUtils.fnHideLoader();
 
-    });
+//     });
     
-}
+// }
 
 
 function showStatusFormModal(complaintID, status, addressed_by, addressed_date) {

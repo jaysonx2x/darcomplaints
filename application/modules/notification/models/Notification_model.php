@@ -44,7 +44,7 @@ class Notification_model extends MY_Model
             $data['profiles_id'] = intval($post['profiles_id']); 
         }
         
-        $data['notified_by'] = $this->session->userdata(SESS_USER_ID);
+        // $data['notified_by'] = $this->session->userdata(SESS_USER_ID);
         
         $result = 0;
         $success = $this->db->insert($this->_table, $data);
@@ -82,28 +82,43 @@ class Notification_model extends MY_Model
     }
     
     
-    public function getNotificationsByUser($is_count=false) 
+    public function getNotificationsByUser($is_count=false, $unread_only=false, $limit=null) 
     {
         switch (intval($this->session->userdata(SESS_USER_TYPE))) 
         {
             case USER_TYPE_ADMIN:
-                $this->db->where_in('n.noti_for', array(NOTI_FOR_ALL, NOTI_FOR_SUPS_ADMINS, NOTI_FOR_ADMINS_STUDENTS));
+                $this->db->where_in('n.noti_for', array(NOTI_FOR_ALL, NOTI_FOR_SUPS_ADMINS, NOTI_FOR_ADMINS_STUDENTS, NOTI_FOR_ADMINS_STAFF));
                 break;
-            case USER_TYPE_SUPERVISOR:
-                $this->db->where_in('n.noti_for', array(NOTI_FOR_ALL, NOTI_FOR_SUPS, NOTI_FOR_SUPS_STUDENTS, NOTI_FOR_SUPS_ADMINS));
+            case USER_TYPE_STAFF:
+                $this->db->where_in('n.noti_for', array(NOTI_FOR_ALL, NOTI_FOR_ADMINS_STAFF));
                 break;
-            case USER_TYPE_STUDENT:
-                $this->db->where_in('n.noti_for', array(NOTI_FOR_ALL, NOTI_FOR_STUDENTS, NOTI_FOR_SUPS_STUDENTS, NOTI_FOR_ADMINS_STUDENTS));
-                break;
+        }
+        
+        if ($unread_only) {
+            $this->db->where('n.is_read', 0);
         }
         
         $this->db
             ->select('n.*, u.fullname, u.profile_url, u.username')
             ->order_by('n.noti_date', 'DESC')
             ->or_where('n.noti_for = 0 AND n.profiles_id = ' . intval($this->session->userdata(SESS_USER_ID)))
-            ->join(TBL_USERS . ' u', 'u.id = n.notified_by');
+            ->join(TBL_USERS . ' u', 'u.id = n.notified_by', 'left');
+        
+        if ($limit !== null) {
+            $this->db->limit($limit);
+        }
         
         return ($is_count) ? $this->db->count_all_results($this->_table . ' n') : $this->db->get($this->_table . ' n')->result();
+    }
+    
+    
+    public function markAsRead($notification_id) 
+    {
+        return $this->update(
+            intval($notification_id),
+            array('is_read' => 1),
+            false
+        );
     }
     
 }

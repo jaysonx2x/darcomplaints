@@ -12,10 +12,21 @@
                         {
                             foreach ($notifications as $notification) 
                             {
+                                $icon = '';
+                                switch(intval($notification->noti_type)) {
+                                    case NOTI_TYPE_ANNOUNCEMENT: // NOTI_TYPE_ANNOUNCEMENT
+                                        $icon = 'fa fa-bullhorn text-info'; break;
+                                    case NOTI_TYPE_COMPLAINT: // NOTI_TYPE_COMPLAINT
+                                        $icon = 'fa fa-exclamation-circle text-danger'; break;
+                                    case NOTI_TYPE_FEEDBACK: // NOTI_TYPE_FEEDBACK
+                                        $icon = 'fa fa-comment text-success'; break;
+                                    default:
+                                        $icon = 'fa fa-bell text-secondary'; break;
+                                }
                     ?>
-                                <a href="javascript:void(0);" onclick="showNotificationDetailModal(<?php echo $notification->id; ?>)" class="list-group-item list-group-item-action d-flex align-items-start">
+                                <a href="javascript:void(0);" onclick="handleNotificationClick(event, <?php echo $notification->id; ?>, <?php echo $notification->noti_type; ?>, <?php echo $notification->owner_id; ?>)" class="list-group-item list-group-item-action d-flex align-items-start">
                                     <div class="mr-3 ">
-                                        <img src="<?php echo base_url($notification->profile_url); ?>" class="rounded-circle" style="width: 50px;" alt="Profile">
+                                        <i class="<?php echo $icon ?> mt-1 mr-2"></i>
                                     </div>
                                     <div class="flex-fill">
                                         <div class="fw-bold"><?php echo $notification->title; ?></div>

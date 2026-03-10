@@ -7,6 +7,8 @@ class Complaint extends MY_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('complaint/Complaint_model', 'complaint');
+        $this->load->model('notification/Notification_model', 'notification');
+        $this->load->helper('email_helper');
     }
     
     
@@ -44,6 +46,29 @@ class Complaint extends MY_Controller {
             
             $result['status'] = $this->complaint->addEditComplaint($post);
             
+            // Send email notification and create notification for new complaints
+            if (intval($result['status']) > 0 && intval($post['id']) == 0) {
+                // Get the complete complaint data
+                $complaint_data = (array) $this->complaint->get($result['status']);
+                
+                // Send email notification
+                if (!empty($complaint_data['email'])) {
+                    send_complaint_created_email($complaint_data);
+                }
+                
+                // Create notification for admins and staff
+                $notification_data = array(
+                    'owner_id'      => $result['status'],
+                    'noti_date'     => fn_get_current_date(),
+                    'title'         => 'New Complaint Submitted',
+                    'message'       => 'A new complaint has been submitted by ' . $complaint_data['fullname'] . ' (Control No: ' . $complaint_data['control_no'] . ')',
+                    'noti_for'      => NOTI_FOR_ADMINS_STAFF,
+                    'noti_type'     => NOTI_TYPE_COMPLAINT,
+                    'profiles_id'   => 0
+                );
+                $this->notification->addNotification($notification_data);
+            }
+            
             echo json_encode($result);
         }
     }
@@ -64,6 +89,17 @@ class Complaint extends MY_Controller {
                 ), 
                 false
             );
+            
+            // Send email notification when status is updated
+            if ($result['status']) {
+                // Get the complete complaint data with updated status
+                $complaint_data = (array) $this->complaint->get(intval($post['id']));
+                
+                // Send email notification
+                if (!empty($complaint_data['email'])) {
+                    send_complaint_status_update_email($complaint_data);
+                }
+            }
             
             echo json_encode($result);
         }

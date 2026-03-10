@@ -35,10 +35,11 @@ function loadUserNotifications() {
             for(var i=0; i<notis.length; i++) {
                 
                 var noti = notis[i];
+                var icon = getNotificationIcon(noti.noti_type);
                 
                 html += `<a class="dropdown-item d-flex align-items-start" href="javascript:void(0);" onclick="showNotificationDetailModal(${noti.id})">
                         <div class="mr-2">
-                            <img src="${BASE_URL+noti.profile_url}" class="rounded-circle" style="width: 60px;" alt="Profile">
+                            <i class="${icon} mt-1 mr-2"></i>
                         </div>
                         <div class="flex-grow-1">
                             <div class="font-weight-bold">${noti.title}</div>
@@ -75,6 +76,21 @@ function loadUserNotifications() {
     });
 
 }
+
+
+function getNotificationIcon(type) {
+    switch(parseInt(type)) {
+        case 1: // NOTI_TYPE_ANNOUNCEMENT
+            return 'fa fa-bullhorn text-info';
+        case 2: // NOTI_TYPE_COMPLAINT
+            return 'fa fa-exclamation-circle text-danger';
+        case 3: // NOTI_TYPE_FEEDBACK
+            return 'fa fa-comment text-success';
+        default:
+            return 'fa fa-bell text-secondary';
+    }
+}
+
 
 function showNotificationDetailModal(notiID) {
     MyUtils.fnShowLoader();

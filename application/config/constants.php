@@ -121,6 +121,7 @@ defined('NOTI_FOR_SUPS')                OR define('NOTI_FOR_SUPS'               
 defined('NOTI_FOR_SUPS_STUDENTS')       OR define('NOTI_FOR_SUPS_STUDENTS'      , 4);
 defined('NOTI_FOR_SUPS_ADMINS')         OR define('NOTI_FOR_SUPS_ADMINS'        , 5);
 defined('NOTI_FOR_ADMINS_STUDENTS')     OR define('NOTI_FOR_ADMINS_STUDENTS'    , 6);
+defined('NOTI_FOR_ADMINS_STAFF')        OR define('NOTI_FOR_ADMINS_STAFF'       , 7);
 
 // NOTIFICATION TYPE
 defined('NOTI_TYPE_ANNOUNCEMENT')       OR define('NOTI_TYPE_ANNOUNCEMENT'      , 1);

@@ -28,6 +28,9 @@
             <?php $this->load->view('user/image_cropper_modal'); ?>
             <?php $this->load->view('user/cropped_preview_modal'); ?>
             <?php $this->load->view('pdfs/pdf_modal'); ?>
+            <?php $this->load->view('feedback/feedback_detail_english_modal'); ?>
+            <?php $this->load->view('feedback/feedback_detail_tagalog_modal'); ?>
+            <?php $this->load->view('complaint/complaint_detail_modal'); ?>
             
         </div>
 

@@ -7,6 +7,7 @@ class Feedback extends MY_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('feedback/Feedback_model', 'feedback');
+        $this->load->model('notification/Notification_model', 'notification');
     }
     
     
@@ -43,6 +44,24 @@ class Feedback extends MY_Controller {
             $post = $this->input->post();
             
             $result['status'] = $this->feedback->addEditFeedback($post);
+            
+            // Create notification for admins and staff when new feedback is submitted
+            if (intval($result['status']) > 0 && intval($post['id']) == 0) {
+                // Get the complete feedback data
+                $feedback_data = (array) $this->feedback->get($result['status']);
+                
+                // Create notification for admins and staff
+                $notification_data = array(
+                    'owner_id'      => $result['status'],
+                    'noti_date'     => fn_get_current_date('Y-m-d H:i:s'),
+                    'title'         => 'New Feedback Submitted',
+                    'message'       => 'A new feedback has been submitted (' . ucfirst($feedback_data['lang']) . ' - ' . $feedback_data['service_availed'] . ')',
+                    'noti_for'      => NOTI_FOR_ADMINS_STAFF,
+                    'noti_type'     => NOTI_TYPE_FEEDBACK,
+                    'profiles_id'   => 0
+                );
+                $this->notification->addNotification($notification_data);
+            }
             
             echo json_encode($result);
         }

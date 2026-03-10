@@ -32,8 +32,21 @@ class Notification extends MY_Controller {
     {
         if ($this->input->is_ajax_request()) 
         {
-            $result['notifications']    = $this->notification->getNotificationsByUser();
-            $result['noti_count']       = $this->notification->getNotificationsByUser(true);
+            $result['notifications']    = $this->notification->getNotificationsByUser(false, false, 10);
+            $result['unread_count']     = $this->notification->getNotificationsByUser(true, true);
+            
+            echo json_encode($result);
+        }
+    }
+    
+    
+    public function markNotificationAsRead() 
+    {
+        if ($this->input->is_ajax_request()) 
+        {
+            $id = $this->input->post('id');
+            
+            $result['status'] = $this->notification->markAsRead(intval($id));
             
             echo json_encode($result);
         }
@@ -66,20 +79,18 @@ class Notification extends MY_Controller {
                 
                 switch (intval($notification['noti_type'])) 
                 {
-                    case NOTI_TYPE_REPORT:
-                        $this->load->model('report/Report_model', 'report');
-                        $result['detail'] = $this->report->getInfoReport(intval($notification['owner_id']));
-                        $result['attachments']  = $this->attachment->get_all_by(array('owner_id' => intval($notification['owner_id']), 'attachment_type' => ATTACHMENT_TYPE_REPORT));
-                        break;
                     case NOTI_TYPE_ANNOUNCEMENT:
                         $this->load->model('announcement/Announcement_model', 'announcement');
                         $result['detail'] = $this->announcement->getInfoAnnouncement(intval($notification['owner_id']));
                         $result['attachments']  = $this->attachment->get_all_by(array('owner_id' => intval($notification['owner_id']), 'attachment_type' => ATTACHMENT_TYPE_ANNOUNCEMENT));
                         break;
-                    case NOTI_TYPE_SENTFILE:
-                        $this->load->model('file/Sent_file_model', 'file');
-                        $result['detail'] = $this->file->getInfoFile(intval($notification['owner_id']));
-                        $result['attachments']  = $this->attachment->get_all_by(array('owner_id' => intval($notification['owner_id']), 'attachment_type' => ATTACHMENT_TYPE_SENTFILE));
+                    case NOTI_TYPE_COMPLAINT:
+                        $this->load->model('complaint/Complaint_model', 'complaint');
+                        $result['detail'] = (array) $this->complaint->get(intval($notification['owner_id']));
+                        break;
+                    case NOTI_TYPE_FEEDBACK:
+                        $this->load->model('feedback/Feedback_model', 'feedback');
+                        $result['detail'] = (array) $this->feedback->get(intval($notification['owner_id']));
                         break;
                 }
             }

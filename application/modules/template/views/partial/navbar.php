@@ -15,20 +15,27 @@
             <div class="right-section d-flex align-items-center">
 
                 <!-- Notifications -->
-<!--                <div class="dropdown mr-3">
+               <div class="dropdown mr-3">
                     <a href="#" class="nav-link position-relative" id="notifDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-bell fa-lg text-dark"></i>
-                        <span class="badge badge-danger position-absolute" style="top: 0; right: 4px; font-size: 0.7rem;">3</span>
+                        <span class="badge badge-danger position-absolute notification-badge" id="notificationCount" style="top: 0; right: 4px; font-size: 0.7rem; display: none;">0</span>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow" aria-labelledby="notifDropdown" style="width: 300px;">
-                        <h6 class="dropdown-header">Notifications</h6>
-                        <a class="dropdown-item" href="#">New complaint received</a>
-                        <a class="dropdown-item" href="#">System update scheduled</a>
-                        <a class="dropdown-item" href="#">User John updated his profile</a>
+                    <div class="dropdown-menu dropdown-menu-right shadow" aria-labelledby="notifDropdown" style="width: 350px; max-height: 500px; overflow-y: auto;">
+                        <h6 class="dropdown-header d-flex justify-content-between align-items-center">
+                            <span>Notifications</span>
+                            <small class="text-muted" id="unreadCount">0 unread</small>
+                        </h6>
+                        <div id="notificationList">
+                            <div class="text-center py-3">
+                                <i class="fa fa-spinner fa-spin"></i> Loading...
+                            </div>
+                        </div>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item text-center small text-muted" href="#">View all</a>
+                        <a class="dropdown-item text-center small text-primary" href="<?= base_url('notification'); ?>">
+                            <i class="fa fa-list"></i> View all notifications
+                        </a>
                     </div>
-                </div>-->
+                </div>
 
                 <!-- User Profile -->
                 <div class="dropdown d-flex align-items-center">
@@ -42,6 +49,33 @@
                         <a class="dropdown-item" href="<?= base_url('my-profile'); ?>"><i class="fa fa-user-circle"></i> My Profile</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item text-danger" href="<?= base_url('auth/logout'); ?>"><i class="fa fa-sign-out"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notification Detail Modal -->
+        <div class="modal fade" id="notificationDetailModal" tabindex="-1" role="dialog" aria-labelledby="notificationDetailModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header notification-modal-header">
+                        <h5 class="modal-title" id="notificationDetailModalLabel">
+                            <i class="fa fa-bell mr-2"></i> Notification Details
+                        </h5>
+                        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="notificationDetailContent">
+                        <div class="text-center py-5">
+                            <i class="fa fa-spinner fa-spin fa-3x text-muted"></i>
+                            <p class="mt-3 text-muted">Loading notification details...</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                            <i class="fa fa-times"></i> Close
+                        </button>
                     </div>
                 </div>
             </div>

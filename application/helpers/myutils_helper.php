@@ -407,15 +407,11 @@ if ( ! function_exists('fn_format_user_type'))
             switch ($val)
             {
                 case USER_TYPE_ADMIN: 
-                    $user_type = 'Super Administrator'; 
+                    $user_type = 'Administrator'; 
                     break;
                 
-                case USER_TYPE_SUPERVISOR: 
-                    $user_type = 'Supervisor'; 
-                    break;
-                
-                case USER_TYPE_STUDENT: 
-                    $user_type = 'Student'; 
+                case USER_TYPE_STAFF: 
+                    $user_type = 'Staff'; 
                     break;
                 
             }
@@ -520,36 +516,6 @@ if ( ! function_exists('fn_format_age_group'))
 // ------------------------------------------------------------------------
 
 /**
-* Returns Validate a date
-*
-* @access	public
-* @param	mixed
-* @return	mixed
-* 
-* @version      Nov 19, 2014 (Tiny modification by Jaysonx <juanojayson@gmail.com>
-*/
-if ( ! function_exists('fn_format_profile_type'))
-{
-	function fn_format_profile_type($val='')
-	{
-            $user_type = '';
-            switch ($val)
-            {
-                case PROFILE_STAFF:     $user_type = 'Staff'; break;
-                case PROFILE_CUSTOMER:  $user_type = 'Customer'; break;
-                case PROFILE_DRIVER:    $user_type = 'Driver'; break;
-                case PROFILE_EMPLOYEE:  $user_type = 'Employee'; break;
-            }
-            
-            return $user_type;
-	}
-}
-
-
-
-// ------------------------------------------------------------------------
-
-/**
 * Returns Format to money
 *
 * @access	public
@@ -602,7 +568,7 @@ if ( ! function_exists('fn_get_total_days_in_month'))
 {
 	function fn_get_total_days_in_month($month='', $year='')
 	{
-            $days;
+            $days = 0;
     
             $year  = ($month>12) ? intval($year)+1   : $year;
             $month = ($month>12) ? intval($month)-12 : $month;
@@ -694,191 +660,6 @@ if ( ! function_exists('fn_format_civil_status'))
 	}
 }
 
-// ------------------------------------------------------------------------
-
-/**
-* Returns convert patient status
-*
-* @access	public
-* @param	mixed
-* @return	mixed
-* 
-* @version      July 16, 2019 by Jaysonx <juanojayson@gmail.com>
-*/
-if ( ! function_exists('fn_format_patient_status'))
-{
-	function fn_format_patient_status($val='')
-	{
-            $status = 'PENDING';
-            switch ($val)
-            {
-                case PATIENT_STATUS_PENDING:    $status = 'PENDING'; break;
-                case PATIENT_STATUS_ADMIT:      $status = 'ADMITTED'; break;
-                case PATIENT_STATUS_HOSPITAL:   $status = 'HOSPITALIZED'; break;
-                case PATIENT_STATUS_DISCHARGE:  $status = 'DISCHARGED'; break;
-            }
-            
-            
-            return $status;
-	}
-}
-
-// ------------------------------------------------------------------------
-
-/**
-* Returns get the patient status class
-*
-* @access	public
-* @param	mixed
-* @return	mixed
-* 
-* @version      July 22, 2019 by Jaysonx <juanojayson@gmail.com>
-*/
-if ( ! function_exists('fn_get_patient_status_class'))
-{
-	function fn_get_patient_status_class($val='')
-	{
-            $status = 'text-warning';
-            switch ($val)
-            {
-                case PATIENT_STATUS_PENDING:    $status = 'label-warning'; break;
-                case PATIENT_STATUS_ADMIT:      $status = 'label-success'; break;
-                case PATIENT_STATUS_HOSPITAL:   $status = 'label-info'; break;
-                case PATIENT_STATUS_DISCHARGE:  $status = 'label-danger'; break;
-            }
-            
-            
-            return $status;
-	}
-}
-
-
-// ------------------------------------------------------------------------
-
-/**
-* Returns convert patient status
-*
-* @access	public
-* @param	mixed
-* @return	mixed
-* 
-* @version      July 16, 2019 by Jaysonx <juanojayson@gmail.com>
-*/
-if ( ! function_exists('fn_format_referral_status'))
-{
-	function fn_format_referral_status($val='')
-	{
-            $status = 'PENDING';
-            switch ($val)
-            {
-                case REFERRAL_STATUS_PENDING:   $status = 'PENDING'; break;
-                case REFERRAL_STATUS_APPROVE:   $status = 'APPROVED'; break;
-                case REFERRAL_STATUS_DISAPPROVE: $status = 'DISAPPROVED'; break;
-            }
-            
-            
-            return $status;
-	}
-}
-
-// ------------------------------------------------------------------------
-
-/**
-* Returns get the patient status class
-*
-* @access	public
-* @param	mixed
-* @return	mixed
-* 
-* @version      July 22, 2019 by Jaysonx <juanojayson@gmail.com>
-*/
-if ( ! function_exists('fn_get_referral_status_class'))
-{
-	function fn_get_referral_status_class($val='')
-	{
-            $status = 'text-warning';
-            switch ($val)
-            {
-                case REFERRAL_STATUS_PENDING:   $status = 'text-warning'; break;
-                case REFERRAL_STATUS_APPROVE:   $status = 'text-success'; break;
-                case REFERRAL_STATUS_DISAPPROVE: $status = 'text-danger'; break;
-            }
-            
-            
-            return $status;
-	}
-}
-
-
-// ------------------------------------------------------------------------
-
-/**
-*
-* @access	public
-* @param	mixed
-* @return	mixed
-* 
-* @version      Nov 19, 2014 (Tiny modification by Jaysonx <juanojayson@gmail.com>
-*/
-if ( ! function_exists('fn_format_note_status'))
-{
-	function fn_format_note_status($val='')
-	{
-            $status = '';
-            switch (intval($val))
-            {
-                case NOTE_STATUS_EDIT: 
-                    $status = 'FOR EDITING'; 
-                    break;
-                
-                case NOTE_STATUS_REVIEW: 
-                    $status = 'FOR REVIEW'; 
-                    break;
-                
-                case NOTE_STATUS_LOCK: 
-                    $status = 'LOCKED'; 
-                    break;
-                
-                case NOTE_STATUS_BILLING: 
-                    $status = 'FOR BILLING'; 
-                    break;
-                
-            }
-            
-            return $status;
-	}
-}
-
-
-// ------------------------------------------------------------------------
-
-/**
-* Returns get the patient status class
-*
-* @access	public
-* @param	mixed
-* @return	mixed
-* 
-* @version      July 22, 2019 by Jaysonx <juanojayson@gmail.com>
-*/
-if ( ! function_exists('fn_format_note_status_class'))
-{
-	function fn_format_note_status_class($val='')
-	{
-            $status = 'text-warning';
-            switch ($val)
-            {
-                case NOTE_STATUS_EDIT:      $status = 'text-warning'; break;
-                case NOTE_STATUS_REVIEW:    $status = 'text-info'; break;
-                case NOTE_STATUS_LOCK:      $status = 'text-success'; break;
-                case NOTE_STATUS_BILLING:   $status = 'text-danger'; break;
-            }
-            
-            
-            return $status;
-	}
-}
-
 
 // ------------------------------------------------------------------------
 
@@ -953,11 +734,6 @@ if ( ! function_exists('fn_generate_random_avatar'))
                     
                     break;
                 
-                default :
-                    
-                    $random = array_rand($male_avatars);
-                    $result = $agency_avatars[$random];
-                    
             }
             
             return $result;
@@ -1018,86 +794,6 @@ if ( ! function_exists('fn_format_payment_mode'))
             }
             
             return $mode;
-	}
-}
-
-
-// ------------------------------------------------------------------------
-
-/**
-*
-* @access	public
-* @param	mixed
-* @return	mixed
-* 
-* @version      Nov 19, 2014 (Tiny modification by Jaysonx <juanojayson@gmail.com>
-*/
-if ( ! function_exists('fn_format_payment_status'))
-{
-	function fn_format_payment_status($val='')
-	{
-            $status = '';
-            switch (intval($val))
-            {
-                case PAYMENT_STATUS_UNPAID: 
-                    $status = 'UNPAID'; 
-                    break;
-                
-                case PAYMENT_STATUS_PARTIAL: 
-                    $status = 'PARTIALLY PAID'; 
-                    break;
-                
-                case PAYMENT_STATUS_FULL: 
-                    $status = 'FULLY PAID'; 
-                    break;
-                
-            }
-            
-            return $status;
-	}
-}
-
-
-// ------------------------------------------------------------------------
-
-/**
-*
-* @access	public
-* @param	mixed
-* @return	mixed
-* 
-* @version      Nov 19, 2014 (Tiny modification by Jaysonx <juanojayson@gmail.com>
-*/
-if ( ! function_exists('fn_format_checkin_status'))
-{
-	function fn_format_checkin_status($val='')
-	{
-            $status = '';
-            switch (intval($val))
-            {
-                case CHECKIN_STATUS_PENDING: 
-                    $status = 'PENDING'; 
-                    break;
-                
-                case CHECKIN_STATUS_CONFIRM: 
-                    $status = 'CONFIRMED'; 
-                    break;
-                
-                case CHECKIN_STATUS_IN: 
-                    $status = 'CHECKED IN'; 
-                    break;
-                
-                case CHECKIN_STATUS_OUT: 
-                    $status = 'CHECKED OUT'; 
-                    break;
-                
-                case CHECKIN_STATUS_CANCEL: 
-                    $status = 'CANCELLED'; 
-                    break;
-                
-            }
-            
-            return $status;
 	}
 }
 

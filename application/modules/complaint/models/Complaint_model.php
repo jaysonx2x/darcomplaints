@@ -55,7 +55,7 @@ class Complaint_model extends MY_Model
             
             $data['control_no'] = fn_get_current_date('Ym') . '-' . rand(100, 9999);
             
-            $result = $this->insert($data, false);
+            $result = ($this->insert($data, false)) ? $this->db->insert_id() : 0;
             
         }
         

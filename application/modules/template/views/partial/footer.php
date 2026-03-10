@@ -5,6 +5,7 @@
         <script src="<?= base_url('assets/vendors/sweetalert/js/sweetalert.min.js'); ?>"></script>
         <script src="<?= base_url('assets/vendors/toastr/toastr.min.js'); ?>"></script>
         <script src="<?= base_url('assets/js/myutils.js'); ?>"></script>
+        <script src="<?= base_url('assets/js/navbar-notifications.js'); ?>"></script>
 
         <?php
         if (isset($module_js) && count($module_js) > 0) :

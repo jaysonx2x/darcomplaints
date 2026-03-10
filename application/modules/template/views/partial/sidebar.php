@@ -2,18 +2,14 @@
 
         <?php
             $is_admin_user = false;
-            $is_sup_user = false;
-            $is_student_user = false;
+            $is_staff_user = false;
             switch (intval($this->session->userdata(SESS_USER_TYPE))) 
             {
                 case USER_TYPE_ADMIN:
                     $is_admin_user = true;
                     break;
-                case USER_TYPE_SUPERVISOR:
-                    $is_sup_user = true;
-                    break;
-                case USER_TYPE_STUDENT:
-                    $is_student_user = true;
+                case USER_TYPE_STAFF:
+                    $is_staff_user = true;
                     break;
             }
             $route_class = $this->router->fetch_class();
@@ -31,18 +27,18 @@
                 class="nav-link <?php echo $route_method == 'announcements/index' ? 'active' : ''; ?>">
                  <i class="fa fa-bullhorn"></i> Announcements
             </a>
+            
+            <a href="<?php echo base_url('complaints'); ?>" 
+                   class="nav-link <?php echo $route_method == 'complaints/index' ? 'active' : ''; ?>">
+                   <i class="fa fa-exclamation-circle"></i> Complaints
+                </a>
+                
+                <a href="<?php echo base_url('feedbacks'); ?>" 
+                class="nav-link <?php echo $route_method == 'feedbacks/index' ? 'active' : ''; ?>">
+                <i class="fa fa-feed"></i> Feedbacks
+            </a>
 
             <?php if($is_admin_user) { ?>
-            
-                <a href="<?php echo base_url('complaints'); ?>" 
-                   class="nav-link <?php echo $route_method == 'complaints/index' ? 'active' : ''; ?>">
-                    <i class="fa fa-exclamation-circle"></i> Complaints
-                </a>
-            
-                <a href="<?php echo base_url('feedbacks'); ?>" 
-                   class="nav-link <?php echo $route_method == 'feedbacks/index' ? 'active' : ''; ?>">
-                    <i class="fa fa-feed"></i> Feedbacks
-                </a>
             
                 <a href="<?php echo base_url('users'); ?>" 
                    class="nav-link <?php echo $route_method == 'users/index' ? 'active' : ''; ?>">
